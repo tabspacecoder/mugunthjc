@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
-import Stepper, { Step } from './Stepper.jsx';
+import Stepper, { Step } from '../components/Stepper.jsx';
+import emailjs from 'emailjs-com';
+import { RingLoader } from 'react-spinners';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,14 +11,37 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+    setLoading(true);
+    emailjs.send(
+      'email_sending_service',        // your Email Service ID
+      'email_sending_template',     // your Template ID
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      'uRx4ypKgSm7_enI5f'     // your Public Key (User ID)
+    )
+    .then((result) => {
+      alert('✅ Message sent successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    })
+    .catch((error) => {
+      console.error(error.text);
+      alert('❌ Failed to send message. Please try again.');
+    })
+    .finally(() => {
+      setLoading(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });});
+    };
 
   const handleChange = (e) => {
     setFormData({
@@ -29,8 +54,8 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      value: 'john.doe@email.com',
-      link: 'mailto:john.doe@email.com'
+      value: 'jc.mugunth@gmail.com',
+      link: 'mailto:jc.mugunth@gmail.com'
     },
     {
       icon: <Phone size={24} />,
@@ -41,7 +66,7 @@ const Contact = () => {
     {
       icon: <MapPin size={24} />,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Dublin, Ireland',
       link: '#'
     }
   ];
@@ -135,17 +160,17 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div>
             <h3 className="text-2xl font-bold text-white mb-8">Send Message</h3>  
-          <Stepper
+            {!loading ? 
+            <Stepper
             initialStep={1}
             onStepChange={(step) => {
               console.log(step);
             }}
-            onFinalStepCompleted={() => console.log("All steps completed!")}
+            onFinalStepCompleted={handleSubmit}
             backButtonText="Previous"
             nextButtonText="Next"
-            onSubmit={handleSubmit}
           >
             <Step>
               <label htmlFor="name" className="block text-white font-medium mb-2">
@@ -208,7 +233,8 @@ const Contact = () => {
                 />
             </Step>
 
-          </Stepper>
+            </Stepper>
+            :<RingLoader loading color='purple-800'/>}
           </div>
   
         </div>

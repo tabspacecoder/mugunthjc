@@ -6,7 +6,7 @@ export default function Stepper({
   initialStep = 1,
   onStepChange = () => { },
   onFinalStepCompleted = () => { },
-  stepCircleContainerClassName = "green-800",
+  stepCircleContainerClassName = "",
   stepContainerClassName = "",
   contentClassName = "",
   footerClassName = "",
@@ -24,10 +24,13 @@ export default function Stepper({
   const totalSteps = stepsArray.length;
   const isCompleted = currentStep > totalSteps;
   const isLastStep = currentStep === totalSteps;
-
   const updateStep = (newStep) => {
     setCurrentStep(newStep);
-    if (newStep > totalSteps) onFinalStepCompleted();
+    if (newStep > totalSteps) 
+      {
+        onFinalStepCompleted();
+        setCurrentStep(initialStep);
+      }
     else onStepChange(newStep);
   };
 
@@ -37,7 +40,6 @@ export default function Stepper({
       updateStep(currentStep - 1);
     }
   };
-
   const handleNext = () => {
     if (!isLastStep) {
       setDirection(1);
@@ -242,7 +244,7 @@ function StepConnector({ isComplete }) {
   };
 
   return (
-    <div className="relative mx-2 h-0.5 flex-1 overflow-hidden rounded bg-neutral-600">
+    <div className="relative mx-2 h-0.5 flex-1 overflow-hidden rounded bg-neutral-600 pointer-events-none">
       <motion.div
         className="absolute left-0 top-0 h-full"
         variants={lineVariants}

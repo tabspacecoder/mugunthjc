@@ -10,10 +10,10 @@ const Footer = () => {
             <Heart size={20} className="text-red-400" />
             <span className="text-gray-300">and</span>
             <Code size={20} className="text-purple-400" />
-            <span className="text-gray-300">by John Doe</span>
+            <span className="text-gray-300">by Mugunth</span>
           </div>
           <p className="text-gray-400 text-sm">
-            © 2024 John Doe. All rights reserved. Built with React and Tailwind CSS.
+            © 2025 Mugunth Jangamasamudram Chandirasekaran. All rights reserved.
           </p>
         </div>
       </div>

@@ -50,7 +50,14 @@ const Hero = () => {
         </div>
 
         <div className="mt-16 animate-bounce">
-          <ChevronDown size={32} className="text-gray-400 mx-auto" />
+        <button
+            type="button"
+            aria-label="Scroll to bottom"
+            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+            className="focus:outline-none"
+          >
+            <ChevronDown size={32} className="text-gray-400 mx-auto" />
+          </button>
         </div>
       </div>
     </div>

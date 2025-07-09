@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import './nav.css'
 
 const Navigation = ({ activeSection, setActiveSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

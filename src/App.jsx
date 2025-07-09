@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Navigation from './components/Navigation.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Experience from './components/Experience.jsx';
-import Education from './components/Education.jsx';
-import Contact from './components/Contact.jsx';
+import Hero from './pages/Hero.jsx';
+import About from './pages/About.jsx';
+import Skills from './pages/Skills.jsx';
+import Projects from './pages/Projects.jsx';
+import Experience from './pages/Experience.jsx';
+import Education from './pages/Education.jsx';
+import Contact from './pages/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import ClickSpark from './animations/ClickSpark.jsx';
 

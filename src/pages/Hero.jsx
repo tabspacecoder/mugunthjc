@@ -1,109 +1,100 @@
-import { ChevronDown, Github, Linkedin, Mail, Zap } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail, Code } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background racing elements */}
-      <div className="absolute inset-0 hexagon-pattern opacity-30"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-500/10 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-orange-500/10 to-transparent rounded-full blur-3xl"></div>
-      
-      <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="mb-12">
-          {/* Premium avatar with McLaren styling */}
-          <div className="relative w-40 h-40 mx-auto mb-8">
-            <div className="w-full h-full bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-full flex items-center justify-center text-5xl font-bold text-black shadow-2xl">
-              <span className="racing-text text-black">MJ</span>
-            </div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full blur opacity-30 animate-pulse"></div>
-            <div className="absolute top-2 right-2 w-6 h-6 bg-green-400 rounded-full border-2 border-black flex items-center justify-center">
-              <div className="w-2 h-2 bg-black rounded-full"></div>
-            </div>
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Avatar */}
+        <div className="relative w-32 h-32 mx-auto mb-8">
+          <div className="w-full h-full bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-4xl font-bold text-black shadow-lg">
+            MJ
           </div>
-          
-          <div className="space-y-4">
-            <h1 className="text-5xl sm:text-7xl font-bold racing-text mb-4">
-              MUGUNTH J C
-            </h1>
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-500"></div>
-              <Zap className="text-orange-500" size={24} />
-              <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-orange-500"></div>
-            </div>
-            <p className="text-xl sm:text-3xl chrome-text mb-8 font-medium">
-              SOFTWARE ENGINEER & AI SPECIALIST
-            </p>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
-              Precision-engineered solutions in <span className="mclaren-accent">Software Development</span> and 
-              <span className="mclaren-accent"> Artificial Intelligence</span>. 
-              Building high-performance applications with racing-inspired excellence.
-            </p>
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full blur opacity-20"></div>
+          <div className="absolute top-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-black"></div>
+        </div>
+        
+        {/* Main Content */}
+        <div className="space-y-6 mb-12">
+          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-4">
+            Mugunth J C
+          </h1>
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-orange-500"></div>
+            <Code className="text-orange-500" size={20} />
+            <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-orange-500"></div>
           </div>
+          <p className="text-xl sm:text-2xl text-gray-300 mb-6">
+            Software Engineer & AI Specialist
+          </p>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Crafting innovative solutions in software development and artificial intelligence. 
+            Passionate about building scalable applications with clean, efficient code.
+          </p>
         </div>
 
-        {/* Premium social links */}
-        <div className="flex justify-center space-x-6 mb-12">
+        {/* Social Links */}
+        <div className="flex justify-center space-x-4 mb-12">
           <a
             href="https://github.com/mugunthjc"
             target="_blank"
             rel="noopener noreferrer"
-            className="premium-card p-4 rounded-xl transition-all duration-300 hover:scale-110 group"
+            className="premium-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
           >
-            <Github size={28} className="text-white group-hover:text-orange-500 transition-colors" />
+            <Github size={24} className="text-white hover:text-orange-500 transition-colors" />
           </a>
           <a
             href="https://linkedin.com/in/mugunthjc"
             target="_blank"
             rel="noopener noreferrer"
-            className="premium-card p-4 rounded-xl transition-all duration-300 hover:scale-110 group"
+            className="premium-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
           >
-            <Linkedin size={28} className="text-white group-hover:text-orange-500 transition-colors" />
+            <Linkedin size={24} className="text-white hover:text-orange-500 transition-colors" />
           </a>
           <a
             href="mailto:jc.mugunth@gmail.com"
-            className="premium-card p-4 rounded-xl transition-all duration-300 hover:scale-110 group"
+            className="premium-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
           >
-            <Mail size={28} className="text-white group-hover:text-orange-500 transition-colors" />
+            <Mail size={24} className="text-white hover:text-orange-500 transition-colors" />
           </a>
         </div>
 
-        {/* Premium action buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-          <button className="mclaren-button px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300">
-            VIEW PROJECTS
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <button className="mclaren-button px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+            View Projects
           </button>
-          <button className="mclaren-button-outline px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300">
-            DOWNLOAD CV
+          <button className="mclaren-button-outline px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+            Download Resume
           </button>
         </div>
 
-        {/* Performance stats */}
-        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-16">
-          <div className="premium-card p-6 rounded-xl text-center performance-indicator">
-            <div className="text-3xl font-bold mclaren-accent mb-2">3+</div>
-            <div className="text-gray-300 font-medium uppercase tracking-wider text-sm">Years Experience</div>
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto mb-16">
+          <div className="premium-card p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-orange-500 mb-1">3+</div>
+            <div className="text-gray-400 text-sm">Years</div>
           </div>
-          <div className="premium-card p-6 rounded-xl text-center performance-indicator">
-            <div className="text-3xl font-bold mclaren-accent mb-2">15+</div>
-            <div className="text-gray-300 font-medium uppercase tracking-wider text-sm">Projects Completed</div>
+          <div className="premium-card p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-orange-500 mb-1">15+</div>
+            <div className="text-gray-400 text-sm">Projects</div>
           </div>
-          <div className="premium-card p-6 rounded-xl text-center performance-indicator">
-            <div className="text-3xl font-bold mclaren-accent mb-2">100%</div>
-            <div className="text-gray-300 font-medium uppercase tracking-wider text-sm">Client Satisfaction</div>
+          <div className="premium-card p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-orange-500 mb-1">100%</div>
+            <div className="text-gray-400 text-sm">Quality</div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll Indicator */}
         <div className="animate-bounce">
           <button
             type="button"
             aria-label="Scroll to explore"
-            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-            className="focus:outline-none group"
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            className="focus:outline-none"
           >
             <div className="flex flex-col items-center space-y-2">
-              <span className="text-gray-400 text-sm uppercase tracking-widest font-medium">Explore</span>
-              <ChevronDown size={32} className="text-orange-500 group-hover:text-orange-400 transition-colors" />
+              <span className="text-gray-400 text-sm">Explore</span>
+              <ChevronDown size={24} className="text-orange-500" />
             </div>
           </button>
         </div>

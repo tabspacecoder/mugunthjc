@@ -3,20 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* McLaren F1 Premium Theme */
+/* Professional McLaren F1 Theme */
 @layer base {
   :root {
     --mclaren-orange: #FF8000;
     --mclaren-orange-light: #FF9933;
     --mclaren-orange-dark: #E6720D;
-    --papaya-orange: #FF8000;
     --carbon-black: #0A0A0A;
     --carbon-grey: #1A1A1A;
     --carbon-light: #2A2A2A;
     --racing-white: #FFFFFF;
     --silver-chrome: #C0C0C0;
     --platinum: #E5E4E2;
-    --titanium: #878681;
   }
   
   body {
@@ -29,123 +27,18 @@
   .mclaren-gradient {
     background: linear-gradient(135deg, 
       var(--carbon-black) 0%, 
-      var(--carbon-grey) 25%, 
-      var(--carbon-light) 50%, 
-      var(--carbon-grey) 75%, 
+      var(--carbon-grey) 50%, 
       var(--carbon-black) 100%);
     position: relative;
   }
   
-  .carbon-fiber {
-    background-image: 
-      radial-gradient(circle at 25% 25%, rgba(255, 128, 0, 0.1) 2px, transparent 2px),
-      radial-gradient(circle at 75% 75%, rgba(255, 128, 0, 0.05) 2px, transparent 2px),
-      linear-gradient(45deg, transparent 40%, rgba(255, 128, 0, 0.02) 50%, transparent 60%);
-    background-size: 30px 30px, 30px 30px, 100px 100px;
-    background-position: 0 0, 15px 15px, 0 0;
-  }
-  
-  .racing-stripe {
-    position: relative;
-  }
-  
-  .racing-stripe::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      var(--mclaren-orange) 20%, 
-      var(--mclaren-orange-light) 50%, 
-      var(--mclaren-orange) 80%, 
-      transparent 100%);
-    box-shadow: 0 0 10px rgba(255, 128, 0, 0.3);
-  }
-  
-  .premium-card {
-    background: linear-gradient(145deg, 
-      rgba(26, 26, 26, 0.9) 0%, 
-      rgba(42, 42, 42, 0.8) 50%, 
-      rgba(26, 26, 26, 0.9) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 128, 0, 0.2);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 128, 0, 0.1);
-  }
-  
-  .premium-card:hover {
-    border-color: rgba(255, 128, 0, 0.4);
-    box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.4),
-      0 0 20px rgba(255, 128, 0, 0.1),
-      inset 0 1px 0 rgba(255, 128, 0, 0.2);
-    transform: translateY(-2px);
-  }
-  
-  .mclaren-button {
-    background: linear-gradient(145deg, var(--mclaren-orange), var(--mclaren-orange-dark));
-    border: 1px solid var(--mclaren-orange-light);
-    box-shadow: 
-      0 4px 15px rgba(255, 128, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    color: var(--carbon-black);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .mclaren-button:hover {
-    background: linear-gradient(145deg, var(--mclaren-orange-light), var(--mclaren-orange));
-    box-shadow: 
-      0 6px 20px rgba(255, 128, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
-  }
-  
-  .mclaren-button-outline {
-    background: transparent;
-    border: 2px solid var(--mclaren-orange);
-    color: var(--mclaren-orange);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .mclaren-button-outline:hover {
-    background: var(--mclaren-orange);
-    color: var(--carbon-black);
-    box-shadow: 
-      0 6px 20px rgba(255, 128, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
-  }
-  
-  .racing-text {
-    background: linear-gradient(135deg, var(--racing-white), var(--platinum));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  
-  .mclaren-accent {
-    color: var(--mclaren-orange);
-    text-shadow: 0 0 10px rgba(255, 128, 0, 0.3);
-  }
-  
-  .performance-indicator {
+  /* Subtle animated background */
+  .animated-bg {
     position: relative;
     overflow: hidden;
   }
   
-  .performance-indicator::before {
+  .animated-bg::before {
     content: '';
     position: absolute;
     top: 0;
@@ -154,40 +47,179 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(255, 128, 0, 0.2), 
+      rgba(255, 128, 0, 0.03), 
       transparent);
-    animation: performance-sweep 2s infinite;
+    animation: subtle-sweep 8s infinite;
+  }
+  
+  @keyframes subtle-sweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  
+  /* Floating particles animation */
+  .floating-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 128, 0, 0.3);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+  }
+  
+  .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+  .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+  .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+  .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+  .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+  .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+  .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+  .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  /* Subtle grid pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 128, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 128, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 0 0;
+  }
+  
+  .premium-card {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 128, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .premium-card:hover {
+    border-color: rgba(255, 128, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .mclaren-button {
+    background: linear-gradient(135deg, var(--mclaren-orange), var(--mclaren-orange-dark));
+    color: var(--carbon-black);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    border: none;
+  }
+  
+  .mclaren-button:hover {
+    background: linear-gradient(135deg, var(--mclaren-orange-light), var(--mclaren-orange));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 128, 0, 0.3);
+  }
+  
+  .mclaren-button-outline {
+    background: transparent;
+    border: 1px solid var(--mclaren-orange);
+    color: var(--mclaren-orange);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+  }
+  
+  .mclaren-button-outline:hover {
+    background: var(--mclaren-orange);
+    color: var(--carbon-black);
+    transform: translateY(-1px);
+  }
+  
+  .racing-text {
+    color: var(--racing-white);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  
+  .mclaren-accent {
+    color: var(--mclaren-orange);
+  }
+  
+  .chrome-text {
+    background: linear-gradient(135deg, 
+      var(--silver-chrome) 0%, 
+      var(--racing-white) 50%, 
+      var(--platinum) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
+  }
+  
+  /* Subtle racing stripe */
+  .racing-stripe::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--mclaren-orange) 50%, 
+      transparent 100%);
+    opacity: 0.5;
+  }
+  
+  /* Performance indicator animation */
+  .performance-bar {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .performance-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent);
+    animation: performance-sweep 3s infinite;
   }
   
   @keyframes performance-sweep {
     0% { left: -100%; }
     100% { left: 100%; }
   }
-  
-  .hexagon-pattern {
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(255, 128, 0, 0.1) 2px, transparent 2px);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
-  }
-  
-  .chrome-text {
-    background: linear-gradient(135deg, 
-      var(--silver-chrome) 0%, 
-      var(--racing-white) 25%, 
-      var(--platinum) 50%, 
-      var(--silver-chrome) 75%, 
-      var(--titanium) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
-  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -195,10 +227,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--mclaren-orange), var(--mclaren-orange-dark));
-  border-radius: 4px;
+  background: var(--mclaren-orange);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--mclaren-orange-light), var(--mclaren-orange));
+  background: var(--mclaren-orange-light);
 }

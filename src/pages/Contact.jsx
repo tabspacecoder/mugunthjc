@@ -54,49 +54,40 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: <Mail size={24} />,
+      icon: <Mail size={20} />,
       title: 'Email',
       value: 'jc.mugunth@gmail.com',
-      link: 'mailto:jc.mugunth@gmail.com',
-      color: 'from-blue-500 to-blue-600'
+      link: 'mailto:jc.mugunth@gmail.com'
     },
     {
-      icon: <Phone size={24} />,
+      icon: <Phone size={20} />,
       title: 'Phone',
       value: '+353 (0) 123-4567',
-      link: 'tel:+353123456789',
-      color: 'from-green-500 to-green-600'
+      link: 'tel:+353123456789'
     },
     {
-      icon: <MapPin size={24} />,
+      icon: <MapPin size={20} />,
       title: 'Location',
       value: 'Dublin, Ireland',
-      link: '#',
-      color: 'from-purple-500 to-purple-600'
+      link: '#'
     }
   ];
 
   const socialLinks = [
     {
-      icon: <Github size={24} />,
+      icon: <Github size={20} />,
       name: 'GitHub',
-      url: 'https://github.com/mugunthjc',
-      color: 'hover:text-gray-400',
-      bgColor: 'from-gray-700 to-gray-800'
+      url: 'https://github.com/mugunthjc'
     },
     {
-      icon: <Linkedin size={24} />,
+      icon: <Linkedin size={20} />,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/mugunthjc',
-      color: 'hover:text-blue-400',
-      bgColor: 'from-blue-600 to-blue-700'
+      url: 'https://linkedin.com/in/mugunthjc'
     },
     {
-      icon: <Twitter size={24} />,
+      icon: <Twitter size={20} />,
       name: 'Twitter',
-      url: 'https://twitter.com/mugunthjc',
-      color: 'hover:text-blue-400',
-      bgColor: 'from-sky-500 to-sky-600'
+      url: 'https://twitter.com/mugunthjc'
     }
   ];
 
@@ -104,33 +95,33 @@ const Contact = () => {
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">Get In Touch</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-500"></div>
-            <MessageSquare className="text-orange-500" size={20} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-orange-500"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
+            <MessageSquare className="text-red-600" size={18} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
           </div>
-          <p className="text-xl text-gray-400">Let's discuss your next project or opportunity</p>
+          <p className="text-lg text-gray-400">Let's discuss your next project</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-8">Contact Information</h3>
+            <h3 className="text-xl font-bold text-white mb-8">Contact Information</h3>
             
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
                 <a
                   key={index}
                   href={info.link}
-                  className="premium-card p-6 rounded-xl hover:scale-105 transition-all duration-300 flex items-center space-x-4"
+                  className="ferrari-card p-6 rounded-xl hover:scale-105 transition-all duration-300 flex items-center space-x-4"
                 >
-                  <div className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-lg flex items-center justify-center text-white`}>
+                  <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center text-white">
                     {info.icon}
                   </div>
                   <div>
                     <h4 className="text-white font-semibold">{info.title}</h4>
-                    <p className="text-gray-300">{info.value}</p>
+                    <p className="text-gray-300 text-sm">{info.value}</p>
                   </div>
                 </a>
               ))}
@@ -138,7 +129,7 @@ const Contact = () => {
 
             <div className="mb-8">
               <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
-                <Zap className="text-orange-500" size={20} />
+                <Zap className="text-red-600" size={18} />
                 <span>Connect With Me</span>
               </h4>
               <div className="flex space-x-4">
@@ -148,7 +139,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 bg-gradient-to-r ${social.bgColor} rounded-lg text-white transition-all duration-300 hover:scale-110 ${social.color}`}
+                    className="p-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg text-white transition-all duration-300 hover:scale-110"
                   >
                     {social.icon}
                   </a>
@@ -156,24 +147,20 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="premium-card rounded-xl p-6">
+            <div className="ferrari-card rounded-xl p-6">
               <h4 className="text-white font-semibold mb-4">Availability Status</h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300">Available for freelance projects</span>
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-gray-300 text-sm">Available for projects</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300">Open to full-time opportunities</span>
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-gray-300 text-sm">Open to opportunities</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <span className="text-gray-300">Usually responds within 24 hours</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  <span className="text-gray-300">Based in Dublin, Ireland (GMT)</span>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <span className="text-gray-300 text-sm">Responds within 24 hours</span>
                 </div>
               </div>
             </div>
@@ -181,7 +168,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-8">Send Message</h3>  
+            <h3 className="text-xl font-bold text-white mb-8">Send Message</h3>  
             {!loading ? (
               <Stepper
                 initialStep={1}
@@ -194,7 +181,7 @@ const Contact = () => {
               >
                 <Step>
                   <div className="space-y-4">
-                    <label htmlFor="name" className="block text-white font-medium">
+                    <label htmlFor="name" className="block text-white font-medium text-sm">
                       Your Name
                     </label>
                     <input
@@ -204,7 +191,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-red-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -212,7 +199,7 @@ const Contact = () => {
                 
                 <Step>
                   <div className="space-y-4">
-                    <label htmlFor="email" className="block text-white font-medium">
+                    <label htmlFor="email" className="block text-white font-medium text-sm">
                       Your Email
                     </label>
                     <input
@@ -222,7 +209,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-red-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -230,7 +217,7 @@ const Contact = () => {
                 
                 <Step>
                   <div className="space-y-4">
-                    <label htmlFor="subject" className="block text-white font-medium">
+                    <label htmlFor="subject" className="block text-white font-medium text-sm">
                       Subject
                     </label>
                     <input
@@ -240,7 +227,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-red-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300"
                       placeholder="Project collaboration, Job opportunity, etc."
                     />
                   </div>
@@ -248,7 +235,7 @@ const Contact = () => {
                 
                 <Step isFinal>
                   <div className="space-y-4">
-                    <label htmlFor="message" className="block text-white font-medium">
+                    <label htmlFor="message" className="block text-white font-medium text-sm">
                       Message
                     </label>
                     <textarea
@@ -258,8 +245,8 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Tell me about your project, requirements, or any questions you have..."
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-red-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-300 resize-none"
+                      placeholder="Tell me about your project..."
                     />
                   </div>
                 </Step>
@@ -267,27 +254,11 @@ const Contact = () => {
             ) : (
               <div className="flex items-center justify-center py-20">
                 <div className="text-center">
-                  <RingLoader loading color="#FF8000" size={60} />
+                  <RingLoader loading color="#DC143C" size={60} />
                   <p className="text-white mt-4">Sending your message...</p>
                 </div>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Additional Info */}
-        <div className="mt-16 text-center">
-          <div className="premium-card rounded-xl p-8 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Let's Build Something Amazing</h3>
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              Whether you have a project in mind, want to collaborate, or just want to say hello, 
-              I'd love to hear from you. Let's create something extraordinary together.
-            </p>
-            <div className="flex items-center justify-center space-x-2">
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-              <span className="text-gray-400 font-medium">Ready to innovate</span>
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-            </div>
           </div>
         </div>
       </div>

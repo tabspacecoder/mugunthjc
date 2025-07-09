@@ -36,18 +36,20 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen mclaren-gradient grid-pattern relative">
+    <div className="min-h-screen ferrari-gradient ferrari-grid relative">
       <BackgroundAnimation />
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <main className="relative z-10">
         <ClickSpark
-          sparkColor='#FF8000'
-          sparkSize={12}
-          sparkRadius={20}
-          sparkCount={6}
-          duration={500}
+          sparkColor='#DC143C'
+          sparkSize={8}
+          sparkRadius={15}
+          sparkCount={5}
+          duration={400}
         >
-          {renderSection()}
+          <div className="page-enter page-enter-active">
+            {renderSection()}
+          </div>
         </ClickSpark>
       </main>
       <Footer />

@@ -1,16 +1,23 @@
 const BackgroundAnimation = () => {
   return (
-    <div className="floating-particles">
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-      <div className="particle"></div>
-    </div>
+    <>
+      {/* Ferrari particles */}
+      <div className="ferrari-particles">
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+        <div className="ferrari-particle"></div>
+      </div>
+      
+      {/* Racing lines */}
+      <div className="racing-lines"></div>
+    </>
   );
 };
 

@@ -3,15 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional McLaren F1 Theme */
+/* Ferrari F1 Minimal Dark Theme */
 @layer base {
   :root {
-    --mclaren-orange: #FF8000;
-    --mclaren-orange-light: #FF9933;
-    --mclaren-orange-dark: #E6720D;
-    --carbon-black: #0A0A0A;
+    --ferrari-red: #DC143C;
+    --ferrari-red-light: #FF1744;
+    --ferrari-red-dark: #B71C1C;
+    --carbon-black: #0D0D0D;
     --carbon-grey: #1A1A1A;
-    --carbon-light: #2A2A2A;
+    --carbon-light: #2D2D2D;
     --racing-white: #FFFFFF;
     --silver-chrome: #C0C0C0;
     --platinum: #E5E4E2;
@@ -20,11 +20,12 @@
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--carbon-black);
+    color: var(--racing-white);
   }
 }
 
 @layer components {
-  .mclaren-gradient {
+  .ferrari-gradient {
     background: linear-gradient(135deg, 
       var(--carbon-black) 0%, 
       var(--carbon-grey) 50%, 
@@ -32,69 +33,47 @@
     position: relative;
   }
   
-  /* Subtle animated background */
-  .animated-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .animated-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255, 128, 0, 0.03), 
-      transparent);
-    animation: subtle-sweep 8s infinite;
-  }
-  
-  @keyframes subtle-sweep {
-    0% { left: -100%; }
-    100% { left: 100%; }
-  }
-  
-  /* Floating particles animation */
-  .floating-particles {
-    position: absolute;
+  /* Minimal Ferrari animations */
+  .ferrari-particles {
+    position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    z-index: 1;
   }
   
-  .particle {
+  .ferrari-particle {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(255, 128, 0, 0.3);
+    width: 1px;
+    height: 1px;
+    background: var(--ferrari-red);
     border-radius: 50%;
-    animation: float 6s infinite linear;
+    opacity: 0.4;
+    animation: ferrari-float 12s infinite linear;
   }
   
-  .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-  .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
-  .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
-  .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
-  .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
-  .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
-  .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
-  .particle:nth-child(8) { left: 80%; animation-delay: 1.5s; }
-  .particle:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+  .ferrari-particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 15s; }
+  .ferrari-particle:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 12s; }
+  .ferrari-particle:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 18s; }
+  .ferrari-particle:nth-child(4) { left: 35%; animation-delay: 1s; animation-duration: 14s; }
+  .ferrari-particle:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 16s; }
+  .ferrari-particle:nth-child(6) { left: 55%; animation-delay: 5s; animation-duration: 13s; }
+  .ferrari-particle:nth-child(7) { left: 65%; animation-delay: 1.5s; animation-duration: 17s; }
+  .ferrari-particle:nth-child(8) { left: 75%; animation-delay: 3.5s; animation-duration: 11s; }
+  .ferrari-particle:nth-child(9) { left: 85%; animation-delay: 2.5s; animation-duration: 19s; }
+  .ferrari-particle:nth-child(10) { left: 95%; animation-delay: 4.5s; animation-duration: 15s; }
   
-  @keyframes float {
+  @keyframes ferrari-float {
     0% {
       transform: translateY(100vh) scale(0);
       opacity: 0;
     }
-    10% {
-      opacity: 1;
+    5% {
+      opacity: 0.4;
     }
-    90% {
-      opacity: 1;
+    95% {
+      opacity: 0.4;
     }
     100% {
       transform: translateY(-100px) scale(1);
@@ -102,102 +81,75 @@
     }
   }
   
-  /* Subtle grid pattern */
-  .grid-pattern {
+  /* Subtle racing lines */
+  .racing-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-image: 
-      linear-gradient(rgba(255, 128, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 128, 0, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: 0 0, 0 0;
+      linear-gradient(90deg, transparent 0%, rgba(220, 20, 60, 0.03) 50%, transparent 100%);
+    background-size: 200px 100%;
+    animation: racing-sweep 20s infinite linear;
+    pointer-events: none;
   }
   
-  .premium-card {
-    background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 128, 0, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  @keyframes racing-sweep {
+    0% { background-position: -200px 0; }
+    100% { background-position: 100vw 0; }
+  }
+  
+  /* Minimal cards */
+  .ferrari-card {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(220, 20, 60, 0.1);
     transition: all 0.3s ease;
   }
   
-  .premium-card:hover {
-    border-color: rgba(255, 128, 0, 0.2);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  .ferrari-card:hover {
+    border-color: rgba(220, 20, 60, 0.2);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.1);
   }
   
-  .mclaren-button {
-    background: linear-gradient(135deg, var(--mclaren-orange), var(--mclaren-orange-dark));
-    color: var(--carbon-black);
+  /* Ferrari buttons */
+  .ferrari-button {
+    background: linear-gradient(135deg, var(--ferrari-red), var(--ferrari-red-dark));
+    color: white;
     font-weight: 600;
     letter-spacing: 0.025em;
     transition: all 0.3s ease;
     border: none;
   }
   
-  .mclaren-button:hover {
-    background: linear-gradient(135deg, var(--mclaren-orange-light), var(--mclaren-orange));
+  .ferrari-button:hover {
+    background: linear-gradient(135deg, var(--ferrari-red-light), var(--ferrari-red));
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(255, 128, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
   }
   
-  .mclaren-button-outline {
+  .ferrari-button-outline {
     background: transparent;
-    border: 1px solid var(--mclaren-orange);
-    color: var(--mclaren-orange);
+    border: 1px solid var(--ferrari-red);
+    color: var(--ferrari-red);
     font-weight: 600;
     letter-spacing: 0.025em;
     transition: all 0.3s ease;
   }
   
-  .mclaren-button-outline:hover {
-    background: var(--mclaren-orange);
-    color: var(--carbon-black);
+  .ferrari-button-outline:hover {
+    background: var(--ferrari-red);
+    color: white;
     transform: translateY(-1px);
   }
   
-  .racing-text {
-    color: var(--racing-white);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-  }
-  
-  .mclaren-accent {
-    color: var(--mclaren-orange);
-  }
-  
-  .chrome-text {
-    background: linear-gradient(135deg, 
-      var(--silver-chrome) 0%, 
-      var(--racing-white) 50%, 
-      var(--platinum) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 500;
-  }
-  
-  /* Subtle racing stripe */
-  .racing-stripe::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      var(--mclaren-orange) 50%, 
-      transparent 100%);
-    opacity: 0.5;
-  }
-  
-  /* Performance indicator animation */
-  .performance-bar {
+  /* Minimal progress bars */
+  .ferrari-progress {
     position: relative;
     overflow: hidden;
   }
   
-  .performance-bar::before {
+  .ferrari-progress::before {
     content: '';
     position: absolute;
     top: 0;
@@ -206,31 +158,62 @@
     height: 100%;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(255, 255, 255, 0.2), 
+      rgba(220, 20, 60, 0.3), 
       transparent);
-    animation: performance-sweep 3s infinite;
+    animation: progress-shine 3s infinite;
   }
   
-  @keyframes performance-sweep {
+  @keyframes progress-shine {
     0% { left: -100%; }
     100% { left: 100%; }
   }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--carbon-black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--mclaren-orange);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--mclaren-orange-light);
+  
+  /* Page transitions */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
+  }
+  
+  /* Subtle grid overlay */
+  .ferrari-grid {
+    background-image: 
+      linear-gradient(rgba(220, 20, 60, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220, 20, 60, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--carbon-black);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--ferrari-red);
+    border-radius: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ferrari-red-light);
+  }
+  
+  /* Text animations */
+  .ferrari-text-glow {
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+  }
+  
+  /* Minimal hover effects */
+  .ferrari-hover:hover {
+    color: var(--ferrari-red);
+    transition: color 0.3s ease;
+  }
 }

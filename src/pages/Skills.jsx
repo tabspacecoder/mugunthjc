@@ -17,13 +17,19 @@ const Skills = () => {
     {
       icon: <Database size={20} />,
       title: 'Database & Cloud',
-      skills: ['MySQL', 'DynamoDB', 'AWS', 'Docker'],
+      skills: ['PostgreSQL', 'DynamoDB', 'AWS', 'Docker'],
       level: 85
     },
     {
       icon: <Cpu size={20} />,
       title: 'AI & ML',
-      skills: ['Python', 'OpenCV', 'Computer Vision', 'Machine Learning'],
+      skills: ['Python', 'OpenCV', 'Computer Vision', 'Machine Learning', 'Deep Learning', 'NLP'],
+      level: 88
+    },
+    {
+      icon: <Cpu size={20} />,
+      title: 'Programming Languages',
+      skills: ['Java', 'Kotlin', 'Python', 'C++', 'Dart', 'JavaScript'],
       level: 88
     }
   ];

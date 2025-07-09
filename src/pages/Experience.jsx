@@ -3,10 +3,10 @@ import { Calendar, MapPin, Building, Trophy, Zap } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      company: 'TechCorp Solutions',
-      position: 'Senior Software Engineer',
-      duration: 'Jan 2022 - Present',
-      location: 'Dublin, Ireland',
+      company: 'Bounteous',
+      position: 'Software Analyst',
+      duration: 'Jun 2023 - Present',
+      location: 'Chennai, India',
       type: 'Full-time',
       description: [
         'Led development of AI-powered applications serving 50,000+ users',
@@ -31,10 +31,10 @@ const Experience = () => {
       technologies: ['Python', 'OpenCV', 'React', 'Node.js', 'MySQL']
     },
     {
-      company: 'StartupXYZ',
+      company: 'SLB',
       position: 'Software Developer Intern',
       duration: 'Jan 2021 - May 2021',
-      location: 'Bangalore, India',
+      location: 'Coimbatore, India',
       type: 'Internship',
       description: [
         'Contributed to IoT dashboard development using Raspberry Pi',

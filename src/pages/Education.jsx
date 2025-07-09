@@ -3,24 +3,24 @@ import { GraduationCap, Award, Calendar, Trophy, Zap } from 'lucide-react';
 const Education = () => {
   const education = [
     {
-      institution: 'University College Dublin',
-      degree: 'Master of Science in Computer Science',
-      duration: '2020 - 2022',
-      gpa: '3.9/4.0',
+      institution: 'Dublin City University',
+      degree: 'Master of Science in Computing (Artificial Intelligence)',
+      duration: 'Upcoming',
+      gpa: 'TBD',
       location: 'Dublin, Ireland',
-      description: 'Specialized in Artificial Intelligence and Machine Learning. Thesis on "Advanced Computer Vision for 3D Object Reconstruction".',
-      coursework: ['Machine Learning', 'Computer Vision', 'Advanced Algorithms', 'Cloud Computing'],
-      achievements: ['Dean\'s List', 'Research Excellence Award']
+      description: 'September 2025 Intake student.',
+      coursework: ['TBD'],
+      achievements: ['Scholarship of 5900 Eur']
     },
     {
-      institution: 'Anna University',
-      degree: 'Bachelor of Engineering in Computer Science',
-      duration: '2016 - 2020',
-      gpa: '3.8/4.0',
-      location: 'Chennai, India',
-      description: 'Strong foundation in computer science fundamentals. Active member of coding club.',
-      coursework: ['Data Structures', 'Operating Systems', 'Database Systems', 'Web Development'],
-      achievements: ['First Class Honours', 'Best Project Award']
+      institution: 'Amrita Vishwa Vidyapeetham',
+      degree: 'Bachelor of Technology in Computer Science',
+      duration: '2019 - 2023',
+      gpa: '8.18/10.0',
+      location: 'Coimbatory, India',
+      description: 'Strong foundation in computer science fundamentals. Active member of ASCII club.',
+      coursework: ['Machine Learning', 'Neural Networks and Deep Learning', 'Computer Vision', 'Software Engineering', 'Mining of Massive Datasets', 'Fundamentals of Data Science', 'Computer Networks', 'Database Management Systems'],
+      achievements: ['Amrita Vidyanti Scholarship - 75%']
     }
   ];
 

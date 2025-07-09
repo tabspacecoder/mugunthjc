@@ -16,11 +16,6 @@ const Footer = () => {
           <p className="text-gray-400 text-sm font-medium tracking-wide">
             © 2025 Mugunth Jangamasamudram Chandirasekaran. All rights reserved.
           </p>
-          <div className="mt-4 flex items-center justify-center space-x-2">
-            <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
-            <span className="text-xs text-gray-500">Professional Portfolio</span>
-            <div className="w-1.5 h-1.5 bg-red-600 rounded-full"></div>
-          </div>
         </div>
       </div>
     </footer>

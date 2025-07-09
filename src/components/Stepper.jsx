@@ -58,7 +58,7 @@ export default function Stepper({
       {...rest}
     >
       <div
-        className={`pl-0 ml-0 mx-auto w-full max-w-md rounded-4xl shadow-xl bg-slate-800/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 ${stepCircleContainerClassName}`}
+        className={`pl-0 ml-0 mx-auto w-full max-w-md rounded-4xl shadow-xl ferrari-card hover:scale-105 transition-all duration-300 space-x-4 ${stepCircleContainerClassName}`}
         style={{ border: "1px solid #222" }}
       >
         <div className={`${stepContainerClassName} flex w-full items-center p-8`}>
@@ -105,13 +105,13 @@ export default function Stepper({
         {!isCompleted && (
           <div className={`px-8 pb-8 ${footerClassName}`}>
             <div
-              className={`mt-10 flex ${currentStep !== 1 ? "justify-between" : "justify-end"
+              className={`mt-5 flex ${currentStep !== 1 ? "justify-between" : "justify-end"
                 }`}
             >
               {currentStep !== 1 && (
                 <button
                   onClick={handleBack}
-                  className={`duration-350 flex items-center justify-center rounded-full hover:bg-red-450 bg-red-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105 ${currentStep === 1
+                  className={`duration-350 flex items-center justify-center rounded-full hover:bg-red-400 bg-red-600 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105 ${currentStep === 1
                     ? "pointer-events-none opacity-50 text-neutral-400"
                     : "text-neutral-400 hover:text-white-700"
                     }`}
@@ -122,7 +122,7 @@ export default function Stepper({
               )}
               <button
                 onClick={isLastStep ? handleComplete : handleNext}
-                className="duration-350 flex items-center justify-center rounded-full hover:bg-purple-700 bg-purple-600 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105"
+                className="duration-350 flex items-center justify-center rounded-full hover:bg-red-800 bg-red-600 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105"
                 {...nextButtonProps}
     >
                 {isLastStep ? "Send Message" : nextButtonText}
@@ -218,9 +218,9 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
     >
       <motion.div
         variants={{
-          inactive: { scale: 1, backgroundColor: "#222", color: "#a3a3a3" },
-          active: { scale: 1, backgroundColor: "#9810FA", color: "#9810FA" },
-          complete: { scale: 1, backgroundColor: "#9810FA", color: "#8200DB" },
+          inactive: { scale: 1, backgroundColor: "#222", color: "#C60008" },
+          active: { scale: 1, backgroundColor: "#C60008", color: "#C60008" },
+          complete: { scale: 1, backgroundColor: "#C60008", color: "#8200DB" },
         }}
         transition={{ duration: 0.3 }}
         className="flex h-8 w-8 items-center justify-center rounded-full font-semibold"
@@ -240,7 +240,7 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
 function StepConnector({ isComplete }) {
   const lineVariants = {
     incomplete: { width: 0, backgroundColor: "transparent" },
-    complete: { width: "100%", backgroundColor: "#9810FA" },
+    complete: { width: "100%", backgroundColor: "#C60008" },
   };
 
   return (

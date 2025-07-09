@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Zap } from 'lucide-react';
 import Stepper, { Step } from '../components/Stepper.jsx';
 import emailjs from 'emailjs-com';
 import { RingLoader } from 'react-spinners';
@@ -12,18 +12,19 @@ const Contact = () => {
     message: ''
   });
   const [loading, setLoading] = useState(false);
+
   const handleSubmit = (e) => {
     setLoading(true);
     emailjs.send(
-      'email_sending_service',        // your Email Service ID
-      'email_sending_template',     // your Template ID
+      'email_sending_service',
+      'email_sending_template',
       {
         name: formData.name,
         email: formData.email,
         subject: formData.subject,
         message: formData.message,
       },
-      'uRx4ypKgSm7_enI5f'     // your Public Key (User ID)
+      'uRx4ypKgSm7_enI5f'
     )
     .then((result) => {
       alert('✅ Message sent successfully!');
@@ -40,8 +41,9 @@ const Contact = () => {
     })
     .finally(() => {
       setLoading(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });});
-    };
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    });
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -55,19 +57,22 @@ const Contact = () => {
       icon: <Mail size={24} />,
       title: 'Email',
       value: 'jc.mugunth@gmail.com',
-      link: 'mailto:jc.mugunth@gmail.com'
+      link: 'mailto:jc.mugunth@gmail.com',
+      color: 'from-blue-500 to-blue-600'
     },
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      value: '+353 (0) 123-4567',
+      link: 'tel:+353123456789',
+      color: 'from-green-500 to-green-600'
     },
     {
       icon: <MapPin size={24} />,
       title: 'Location',
       value: 'Dublin, Ireland',
-      link: '#'
+      link: '#',
+      color: 'from-purple-500 to-purple-600'
     }
   ];
 
@@ -75,20 +80,23 @@ const Contact = () => {
     {
       icon: <Github size={24} />,
       name: 'GitHub',
-      url: 'https://github.com',
-      color: 'hover:text-gray-400'
+      url: 'https://github.com/mugunthjc',
+      color: 'hover:text-gray-400',
+      bgColor: 'from-gray-700 to-gray-800'
     },
     {
       icon: <Linkedin size={24} />,
       name: 'LinkedIn',
-      url: 'https://linkedin.com',
-      color: 'hover:text-blue-400'
+      url: 'https://linkedin.com/in/mugunthjc',
+      color: 'hover:text-blue-400',
+      bgColor: 'from-blue-600 to-blue-700'
     },
     {
       icon: <Twitter size={24} />,
       name: 'Twitter',
-      url: 'https://twitter.com',
-      color: 'hover:text-blue-400'
+      url: 'https://twitter.com/mugunthjc',
+      color: 'hover:text-blue-400',
+      bgColor: 'from-sky-500 to-sky-600'
     }
   ];
 
@@ -97,6 +105,11 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-500"></div>
+            <MessageSquare className="text-orange-500" size={20} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-orange-500"></div>
+          </div>
           <p className="text-xl text-gray-400">Let's discuss your next project or opportunity</p>
         </div>
 
@@ -110,13 +123,13 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.link}
-                  className="flex items-center space-x-4 p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl hover:bg-slate-800/70 transition-all duration-300"
+                  className="premium-card p-6 rounded-xl hover:scale-105 transition-all duration-300 flex items-center space-x-4"
                 >
-                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-lg flex items-center justify-center text-white`}>
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="text-white font-medium">{info.title}</h4>
+                    <h4 className="text-white font-semibold">{info.title}</h4>
                     <p className="text-gray-300">{info.value}</p>
                   </div>
                 </a>
@@ -124,7 +137,10 @@ const Contact = () => {
             </div>
 
             <div className="mb-8">
-              <h4 className="text-white font-medium mb-4">Follow Me</h4>
+              <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
+                <Zap className="text-orange-500" size={20} />
+                <span>Connect With Me</span>
+              </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
@@ -132,7 +148,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-3 bg-slate-800/50 backdrop-blur-sm rounded-full text-white transition-all duration-300 hover:bg-slate-800/70 ${social.color}`}
+                    className={`p-3 bg-gradient-to-r ${social.bgColor} rounded-lg text-white transition-all duration-300 hover:scale-110 ${social.color}`}
                   >
                     {social.icon}
                   </a>
@@ -140,20 +156,24 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6">
-              <h4 className="text-white font-medium mb-4">Availability</h4>
+            <div className="premium-card rounded-xl p-6">
+              <h4 className="text-white font-semibold mb-4">Availability Status</h4>
               <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-gray-300">Available for freelance projects</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-gray-300">Open to full-time opportunities</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                   <span className="text-gray-300">Usually responds within 24 hours</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                  <span className="text-gray-300">Based in Dublin, Ireland (GMT)</span>
                 </div>
               </div>
             </div>
@@ -162,81 +182,113 @@ const Contact = () => {
           {/* Contact Form */}
           <div>
             <h3 className="text-2xl font-bold text-white mb-8">Send Message</h3>  
-            {!loading ? 
-            <Stepper
-            initialStep={1}
-            onStepChange={(step) => {
-              console.log(step);
-            }}
-            onFinalStepCompleted={handleSubmit}
-            backButtonText="Previous"
-            nextButtonText="Next"
-          >
-            <Step>
-              <label htmlFor="name" className="block text-white font-medium mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Your Name"
-                  />
-            </Step>
-            <Step>
-                  <label htmlFor="email" className="block text-white font-medium mb-2">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                    placeholder="email@email.com"
-                  />
-            </Step>
-            <Step>
-                <label htmlFor="subject" className="block text-white font-medium mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                  placeholder="Let's work together"
-                />
-            </Step>
-            <Step isFinal>
-                <label htmlFor="message" className="block text-white font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project..."
-                />
-            </Step>
-
-            </Stepper>
-            :<RingLoader loading color='purple-800'/>}
+            {!loading ? (
+              <Stepper
+                initialStep={1}
+                onStepChange={(step) => {
+                  console.log(step);
+                }}
+                onFinalStepCompleted={handleSubmit}
+                backButtonText="Previous"
+                nextButtonText="Next"
+              >
+                <Step>
+                  <div className="space-y-4">
+                    <label htmlFor="name" className="block text-white font-medium">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                </Step>
+                
+                <Step>
+                  <div className="space-y-4">
+                    <label htmlFor="email" className="block text-white font-medium">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </Step>
+                
+                <Step>
+                  <div className="space-y-4">
+                    <label htmlFor="subject" className="block text-white font-medium">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Project collaboration, Job opportunity, etc."
+                    />
+                  </div>
+                </Step>
+                
+                <Step isFinal>
+                  <div className="space-y-4">
+                    <label htmlFor="message" className="block text-white font-medium">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 bg-gray-800/50 border border-orange-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 resize-none"
+                      placeholder="Tell me about your project, requirements, or any questions you have..."
+                    />
+                  </div>
+                </Step>
+              </Stepper>
+            ) : (
+              <div className="flex items-center justify-center py-20">
+                <div className="text-center">
+                  <RingLoader loading color="#FF8000" size={60} />
+                  <p className="text-white mt-4">Sending your message...</p>
+                </div>
+              </div>
+            )}
           </div>
-  
+        </div>
+
+        {/* Additional Info */}
+        <div className="mt-16 text-center">
+          <div className="premium-card rounded-xl p-8 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">Let's Build Something Amazing</h3>
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Whether you have a project in mind, want to collaborate, or just want to say hello, 
+              I'd love to hear from you. Let's create something extraordinary together.
+            </p>
+            <div className="flex items-center justify-center space-x-2">
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <span className="text-gray-400 font-medium">Ready to innovate</span>
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

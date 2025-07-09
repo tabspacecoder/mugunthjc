@@ -1,4 +1,7 @@
 import { Heart, Target, Zap, Award, Code2 } from 'lucide-react';
+import ProfileCard from '../components/ProfileCard';
+import mugunthjc from '../assets/mugunthjc.png';
+import mugunth from '../assets/mugunth.jpg'; // Ensure this path is correct
 
 const About = () => {
   return (
@@ -13,7 +16,7 @@ const About = () => {
           </div>
           <p className="text-lg text-gray-400">Get to know who I am and what drives me</p>
         </div>
-
+{/* 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="relative">
             <div className="ferrari-card p-6 rounded-xl">
@@ -22,6 +25,22 @@ const About = () => {
                 <div className="absolute bottom-4 right-4 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
               </div>
             </div>
+          </div> */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className='relative'>
+          <ProfileCard
+              name="Mugunth"
+              title="Developer"
+              handle="tabspacecoder"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl={mugunthjc}
+              miniAvatarUrl={mugunth}
+              innerGradient="from-red-600 to-red-700"
+              outerGradient="from-red-600/20 to-red-700/20"
+              enableTilt={true}
+              onContactClick={() => console.log('Contact clicked')}
+            />
           </div>
           
           <div className="space-y-6">

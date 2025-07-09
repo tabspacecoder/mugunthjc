@@ -20,8 +20,8 @@ const Navigation = ({ activeSection, setActiveSection }) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-600 to-red-700 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-sm">MJ</span>
+              <div className="w-9 h-8 bg-gradient-to-r from-red-600 to-red-700 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">MJC</span>
               </div>
               <span className="text-lg font-bold text-white">Portfolio</span>
             </div>

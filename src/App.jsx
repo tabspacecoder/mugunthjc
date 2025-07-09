@@ -35,11 +35,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen mclaren-gradient carbon-fiber">
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <main>
         <ClickSpark
-          sparkColor='#fff'
+          sparkColor='#FF8000'
           sparkSize={10}
           sparkRadius={15}
           sparkCount={8}

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Zap } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Zap, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Stepper, { Step } from '../components/Stepper.jsx';
+import SpotlightCard from '../components/SpotlightCard';
 import emailjs from 'emailjs-com';
 import { RingLoader } from 'react-spinners';
 
@@ -91,10 +93,80 @@ const Contact = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const socialVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Minimal floating communication elements */}
+      <div className="absolute inset-0 opacity-5">
+        {Array.from({ length: 10 }, (_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 360],
+              opacity: [0.3, 1, 0.3],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          >
+            {i % 3 === 0 ? (
+              <Mail size={10} className="text-red-500" />
+            ) : i % 3 === 1 ? (
+              <Send size={8} className="text-red-400" />
+            ) : (
+              <MessageSquare size={12} className="text-red-600" />
+            )}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-3xl font-bold text-white mb-4">Get In Touch</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
@@ -102,72 +174,100 @@ const Contact = () => {
             <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
           </div>
           <p className="text-lg text-gray-400">Let's discuss your next project</p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-12"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Contact Information */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold text-white mb-8">Contact Information</h3>
             
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
-                <a
+                <motion.div
                   key={index}
-                  href={info.link}
-                  className="ferrari-card p-6 rounded-xl hover:scale-105 transition-all duration-300 flex items-center space-x-4"
+                  variants={itemVariants}
                 >
-                  <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center text-white">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">{info.title}</h4>
-                    <p className="text-gray-300 text-sm">{info.value}</p>
-                  </div>
-                </a>
+                  <SpotlightCard 
+                    className="border-red-600/20 bg-black/40 flex items-center space-x-4"
+                    spotlightColor="rgba(220, 20, 60, 0.15)"
+                  >
+                    <div className="w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center text-white">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold">{info.title}</h4>
+                      <p className="text-gray-300 text-sm">{info.value}</p>
+                    </div>
+                  </SpotlightCard>
+                </motion.div>
               ))}
             </div>
 
-            <div className="mb-8">
+            <motion.div 
+              className="mb-8"
+              variants={itemVariants}
+            >
               <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
                 <Zap className="text-red-600" size={18} />
                 <span>Connect With Me</span>
               </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg text-white transition-all duration-300 hover:scale-110"
+                    className="p-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg text-white transition-all duration-300"
+                    variants={socialVariants}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {social.icon}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="ferrari-card rounded-xl p-6">
-              <h4 className="text-white font-semibold mb-4">Availability Status</h4>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300 text-sm">Available for projects</span>
+            <motion.div variants={itemVariants}>
+              <SpotlightCard 
+                className="border-red-600/20 bg-black/40"
+                spotlightColor="rgba(220, 20, 60, 0.15)"
+              >
+                <h4 className="text-white font-semibold mb-4">Availability Status</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <motion.div 
+                      className="w-2 h-2 bg-green-400 rounded-full"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className="text-gray-300 text-sm">Available for projects</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <motion.div 
+                      className="w-2 h-2 bg-green-400 rounded-full"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    />
+                    <span className="text-gray-300 text-sm">Open to opportunities</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <span className="text-gray-300 text-sm">Responds within 24 hours</span>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300 text-sm">Open to opportunities</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Responds within 24 hours</span>
-                </div>
-              </div>
-            </div>
-          </div>
+              </SpotlightCard>
+            </motion.div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-xl font-bold text-white mb-8">Send Message</h3>  
             {!loading ? (
               <Stepper
@@ -265,8 +365,8 @@ const Contact = () => {
                 </div>
               </div>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,48 +1,97 @@
-import { ExternalLink, Github, Star, Zap, Eye } from 'lucide-react';
+import { ExternalLink, Github, Star, Zap, Eye, GitBranch, Users, Calendar, Code2, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import SpotlightCard from '../components/SpotlightCard';
 
 const Projects = () => {
+  const [githubStats, setGithubStats] = useState({
+    totalRepos: 42,
+    totalStars: 156,
+    totalForks: 38,
+    totalCommits: 1247,
+    languages: ['JavaScript', 'Python', 'Java', 'TypeScript']
+  });
+
   const projects = [
     {
       title: '3D Object Reconstruction System',
-      description: 'Advanced computer vision system that generates precise 3D models from 2D images using cutting-edge ML algorithms.',
+      description: 'Advanced computer vision system that generates precise 3D models from 2D images using cutting-edge ML algorithms and neural networks.',
+      longDescription: 'This project implements state-of-the-art computer vision techniques to reconstruct 3D objects from multiple 2D images. Uses deep learning models for depth estimation and point cloud generation.',
       image: 'https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Python', 'OpenCV', 'Computer Vision', 'ML'],
+      technologies: ['Python', 'OpenCV', 'TensorFlow', 'Computer Vision', 'ML', 'NumPy'],
       github: 'https://github.com/mugunthjc',
       live: '#',
       featured: true,
-      stats: { stars: 45, forks: 12, views: '2.3k' }
+      stats: { 
+        stars: 45, 
+        forks: 12, 
+        views: '2.3k',
+        commits: 127,
+        contributors: 3,
+        lastUpdate: '2 days ago'
+      },
+      category: 'AI/ML',
+      status: 'Active'
     },
     {
       title: 'Video Streaming Application',
       description: 'High-performance peer-to-peer video streaming platform with real-time protocols and adaptive bitrate streaming.',
+      longDescription: 'Built a scalable video streaming solution with WebRTC integration, supporting multiple concurrent streams with automatic quality adjustment based on network conditions.',
       image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Java', 'Socket Programming', 'Real-time', 'WebRTC'],
+      technologies: ['Java', 'Socket Programming', 'WebRTC', 'Real-time', 'Spring Boot'],
       github: 'https://github.com/mugunthjc',
       live: '#',
       featured: true,
-      stats: { stars: 38, forks: 8, views: '1.8k' }
+      stats: { 
+        stars: 38, 
+        forks: 8, 
+        views: '1.8k',
+        commits: 89,
+        contributors: 2,
+        lastUpdate: '1 week ago'
+      },
+      category: 'Web Development',
+      status: 'Completed'
     },
     {
       title: 'IoT Smart Dashboard',
       description: 'Edge-computing IoT solution for real-time monitoring with Raspberry Pi and cloud integration.',
+      longDescription: 'Comprehensive IoT monitoring system with edge computing capabilities, real-time data visualization, and cloud synchronization for industrial applications.',
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Raspberry Pi', 'Python', 'IoT', 'AWS'],
+      technologies: ['Raspberry Pi', 'Python', 'IoT', 'AWS', 'React', 'MQTT'],
       github: 'https://github.com/mugunthjc',
       live: '#',
       featured: false,
-      stats: { stars: 23, forks: 5, views: '1.2k' }
+      stats: { 
+        stars: 23, 
+        forks: 5, 
+        views: '1.2k',
+        commits: 64,
+        contributors: 1,
+        lastUpdate: '3 weeks ago'
+      },
+      category: 'IoT',
+      status: 'Maintenance'
     },
     {
       title: 'Sign Language Learning App',
       description: 'Educational app using computer vision to teach Indian Sign Language with real-time gesture recognition.',
+      longDescription: 'Interactive learning platform that uses computer vision and machine learning to recognize and teach Indian Sign Language gestures in real-time.',
       image: 'https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=600',
-      technologies: ['Python', 'OpenCV', 'Education Tech', 'TensorFlow'],
+      technologies: ['Python', 'OpenCV', 'TensorFlow', 'Education Tech', 'Flutter'],
       github: 'https://github.com/mugunthjc',
       live: '#',
       featured: false,
-      stats: { stars: 31, forks: 7, views: '1.5k' }
+      stats: { 
+        stars: 31, 
+        forks: 7, 
+        views: '1.5k',
+        commits: 73,
+        contributors: 2,
+        lastUpdate: '1 month ago'
+      },
+      category: 'Education',
+      status: 'Active'
     }
   ];
 
@@ -54,7 +103,7 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   };
@@ -71,9 +120,20 @@ const Projects = () => {
     }
   };
 
+  const statsVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Minimal racing line animation */}
+      {/* Enhanced background animations */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
           className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"
@@ -86,189 +146,321 @@ const Projects = () => {
             ease: "linear"
           }}
         />
+        <motion.div
+          className="absolute top-3/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent"
+          animate={{
+            x: ['100%', '-100%'],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header Section */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Featured Projects</h2>
-          <div className="flex items-center justify-center space-x-3 mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2>
+          <div className="flex items-center justify-center space-x-3 mb-6">
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
-            <Zap className="text-red-600" size={18} />
+            <Zap className="text-red-600" size={20} />
             <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
           </div>
-          <p className="text-lg text-gray-400">Recent work and innovations</p>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Showcasing innovative solutions and cutting-edge technology implementations
+          </p>
+        </motion.div>
+
+        {/* GitHub Stats Overview */}
+        <motion.div 
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={statsVariants}>
+            <SpotlightCard 
+              className="p-4 border-red-600/20 bg-black/40 text-center"
+              spotlightColor="rgba(220, 20, 60, 0.15)"
+            >
+              <div className="flex items-center justify-center mb-2">
+                <Github size={20} className="text-red-600" />
+              </div>
+              <div className="text-2xl font-bold text-white">{githubStats.totalRepos}</div>
+              <div className="text-gray-400 text-sm">Repositories</div>
+            </SpotlightCard>
+          </motion.div>
+
+          <motion.div variants={statsVariants}>
+            <SpotlightCard 
+              className="p-4 border-red-600/20 bg-black/40 text-center"
+              spotlightColor="rgba(220, 20, 60, 0.15)"
+            >
+              <div className="flex items-center justify-center mb-2">
+                <Star size={20} className="text-yellow-500" />
+              </div>
+              <div className="text-2xl font-bold text-white">{githubStats.totalStars}</div>
+              <div className="text-gray-400 text-sm">Stars</div>
+            </SpotlightCard>
+          </motion.div>
+
+          <motion.div variants={statsVariants}>
+            <SpotlightCard 
+              className="p-4 border-red-600/20 bg-black/40 text-center"
+              spotlightColor="rgba(220, 20, 60, 0.15)"
+            >
+              <div className="flex items-center justify-center mb-2">
+                <GitBranch size={20} className="text-green-500" />
+              </div>
+              <div className="text-2xl font-bold text-white">{githubStats.totalForks}</div>
+              <div className="text-gray-400 text-sm">Forks</div>
+            </SpotlightCard>
+          </motion.div>
+
+          <motion.div variants={statsVariants}>
+            <SpotlightCard 
+              className="p-4 border-red-600/20 bg-black/40 text-center"
+              spotlightColor="rgba(220, 20, 60, 0.15)"
+            >
+              <div className="flex items-center justify-center mb-2">
+                <Code2 size={20} className="text-blue-500" />
+              </div>
+              <div className="text-2xl font-bold text-white">{githubStats.totalCommits}</div>
+              <div className="text-gray-400 text-sm">Commits</div>
+            </SpotlightCard>
+          </motion.div>
         </motion.div>
 
         {/* Featured Projects */}
         <motion.div 
-          className="grid lg:grid-cols-2 gap-8 mb-16"
+          className="mb-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {featuredProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={projectVariants}
-              className="relative"
-            >
-              <SpotlightCard 
-                className="p-0 border-red-600/20 bg-black/40"
-                spotlightColor="rgba(220, 20, 60, 0.15)"
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-2">
+            <Star className="text-red-600" size={24} />
+            <span>Featured Projects</span>
+          </h3>
+          
+          <div className="grid lg:grid-cols-2 gap-8">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                variants={projectVariants}
+                className="relative"
               >
-                <div className="relative overflow-hidden rounded-t-3xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
-                  <div className="absolute top-4 left-4 flex space-x-2">
-                    <div className="bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
-                      <Star size={10} />
-                      <span>{project.stats.stars}</span>
+                <SpotlightCard 
+                  className="p-0 border-red-600/20 bg-black/40"
+                  spotlightColor="rgba(220, 20, 60, 0.15)"
+                >
+                  <div className="relative overflow-hidden rounded-t-3xl">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    
+                    {/* Project Status */}
+                    <div className="absolute top-4 left-4">
+                      <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                        project.status === 'Active' ? 'bg-green-600 text-white' :
+                        project.status === 'Completed' ? 'bg-blue-600 text-white' :
+                        'bg-yellow-600 text-white'
+                      }`}>
+                        {project.status}
+                      </div>
                     </div>
-                    <div className="bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
-                      <Eye size={10} />
-                      <span>{project.stats.views}</span>
-                    </div>
-                  </div>
 
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1">
-                      <Star size={12} />
-                      <span>Featured</span>
+                    {/* GitHub Stats */}
+                    <div className="absolute top-4 right-4 flex space-x-2">
+                      <div className="bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
+                        <Star size={10} />
+                        <span>{project.stats.stars}</span>
+                      </div>
+                      <div className="bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
+                        <GitBranch size={10} />
+                        <span>{project.stats.forks}</span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-xs font-medium border border-red-600/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+
+                    {/* Category Badge */}
+                    <div className="absolute bottom-4 left-4">
+                      <div className="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        {project.category}
+                      </div>
+                    </div>
                   </div>
                   
-                  <div className="flex justify-between items-center">
-                    <div className="flex space-x-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
-                      >
-                        <Github size={16} />
-                        <span>Code</span>
-                      </a>
-                      <a
-                        href={project.live}
-                        className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
-                      >
-                        <ExternalLink size={16} />
-                        <span>Demo</span>
-                      </a>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.longDescription}</p>
+                    
+                    {/* Project Stats */}
+                    <div className="grid grid-cols-3 gap-4 mb-4 p-3 bg-gray-800/30 rounded-lg">
+                      <div className="text-center">
+                        <div className="text-white font-semibold text-sm">{project.stats.commits}</div>
+                        <div className="text-gray-400 text-xs">Commits</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-white font-semibold text-sm">{project.stats.contributors}</div>
+                        <div className="text-gray-400 text-xs">Contributors</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-white font-semibold text-sm">{project.stats.views}</div>
+                        <div className="text-gray-400 text-xs">Views</div>
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-500">
-                      {project.stats.forks} forks
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-xs font-medium border border-red-600/30"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex justify-between items-center">
+                      <div className="flex space-x-4">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
+                        >
+                          <Github size={16} />
+                          <span>Code</span>
+                        </a>
+                        <a
+                          href={project.live}
+                          className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
+                        >
+                          <ExternalLink size={16} />
+                          <span>Demo</span>
+                        </a>
+                      </div>
+                      <div className="text-xs text-gray-500 flex items-center space-x-1">
+                        <Calendar size={12} />
+                        <span>{project.stats.lastUpdate}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
+                </SpotlightCard>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Other Projects */}
         <motion.div 
-          className="grid md:grid-cols-2 gap-6 mb-16"
+          className="mb-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {otherProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={projectVariants}
-              className="relative"
-            >
-              <SpotlightCard 
-                className="p-0 border-red-600/20 bg-black/40"
-                spotlightColor="rgba(220, 20, 60, 0.15)"
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-2">
+            <TrendingUp className="text-red-600" size={24} />
+            <span>Other Projects</span>
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {otherProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                variants={projectVariants}
+                className="relative"
               >
-                <div className="relative overflow-hidden rounded-t-3xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  
-                  <div className="absolute top-3 left-3 flex space-x-2">
-                    <div className="bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
-                      <Star size={8} />
-                      <span>{project.stats.stars}</span>
+                <SpotlightCard 
+                  className="p-0 border-red-600/20 bg-black/40"
+                  spotlightColor="rgba(220, 20, 60, 0.15)"
+                >
+                  <div className="relative overflow-hidden rounded-t-3xl">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    
+                    <div className="absolute top-3 left-3 flex space-x-2">
+                      <div className="bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
+                        <Star size={8} />
+                        <span>{project.stats.stars}</span>
+                      </div>
+                      <div className={`px-2 py-1 rounded text-xs font-semibold ${
+                        project.status === 'Active' ? 'bg-green-600 text-white' :
+                        project.status === 'Completed' ? 'bg-blue-600 text-white' :
+                        'bg-yellow-600 text-white'
+                      }`}>
+                        {project.status}
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-3 right-3">
+                      <div className="bg-red-600/80 text-white px-2 py-1 rounded text-xs">
+                        {project.category}
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="p-5">
-                  <h4 className="text-lg font-semibold text-white mb-2">{project.title}</h4>
-                  <p className="text-gray-300 text-sm mb-3 leading-relaxed">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div className="flex space-x-3">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
-                      >
-                        <Github size={14} />
-                        <span>Code</span>
-                      </a>
-                      <a
-                        href={project.live}
-                        className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
-                      >
-                        <ExternalLink size={14} />
-                        <span>Demo</span>
-                      </a>
+                  <div className="p-5">
+                    <h4 className="text-lg font-semibold text-white mb-2">{project.title}</h4>
+                    <p className="text-gray-300 text-sm mb-3 leading-relaxed">{project.description}</p>
+                    
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                    <div className="text-xs text-gray-500">
-                      {project.stats.views}
+                    
+                    <div className="flex justify-between items-center">
+                      <div className="flex space-x-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
+                        >
+                          <Github size={14} />
+                          <span>Code</span>
+                        </a>
+                        <a
+                          href={project.live}
+                          className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
+                        >
+                          <ExternalLink size={14} />
+                          <span>Demo</span>
+                        </a>
+                      </div>
+                      <div className="text-xs text-gray-500 flex items-center space-x-1">
+                        <Users size={10} />
+                        <span>{project.stats.contributors}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
+                </SpotlightCard>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
+        {/* GitHub Profile CTA */}
         <motion.div 
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -276,22 +468,34 @@ const Projects = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <SpotlightCard 
-            className="max-w-2xl mx-auto border-red-600/20 bg-black/40"
+            className="max-w-3xl mx-auto border-red-600/20 bg-black/40"
             spotlightColor="rgba(220, 20, 60, 0.15)"
           >
-            <h3 className="text-xl font-bold text-white mb-4">Explore More</h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              Visit my GitHub for the complete portfolio of projects and contributions.
-            </p>
-            <a
-              href="https://github.com/mugunthjc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center space-x-2"
-            >
-              <Github size={16} />
-              <span>View All Projects</span>
-            </a>
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Explore More on GitHub</h3>
+              <p className="text-gray-300 leading-relaxed mb-6">
+                Discover my complete portfolio of projects, contributions, and open-source work on GitHub.
+              </p>
+              
+              {/* Language Stats */}
+              <div className="flex justify-center space-x-4 mb-6">
+                {githubStats.languages.map((lang, index) => (
+                  <span key={index} className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm">
+                    {lang}
+                  </span>
+                ))}
+              </div>
+              
+              <a
+                href="https://github.com/mugunthjc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ferrari-button px-8 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center space-x-2"
+              >
+                <Github size={18} />
+                <span>View GitHub Profile</span>
+              </a>
+            </div>
           </SpotlightCard>
         </motion.div>
       </div>

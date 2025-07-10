@@ -2,7 +2,7 @@ import { ChevronDown, Github, Linkedin, Mail, Code } from 'lucide-react';
 import SplitText from '../components/SplitText';
 import mugunth from '../assets/mugunth.jpg';
 
-const Hero = () => {
+const Hero = ({ setActiveSection }) => {
   const handleAnimationComplete = () => {
     console.log('All letters have animated!');
   };
@@ -80,7 +80,10 @@ const Hero = () => {
 
         {/* Minimal Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <button className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300">
+          <button 
+            onClick={() => setActiveSection('projects')}
+            className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300"
+          >
             View Work
           </button>
           <button className="ferrari-button-outline px-6 py-3 rounded-lg font-medium transition-all duration-300">

@@ -16,7 +16,7 @@ function App() {
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
-        return <Hero />;
+        return <Hero setActiveSection={setActiveSection} />;
       case 'about':
         return <About />;
       case 'skills':

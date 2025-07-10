@@ -7,47 +7,43 @@ const Experience = ({ setActiveSection }) => {
     {
       company: 'Bounteous',
       position: 'Software Analyst',
-      duration: 'Jun 2023 - Present',
+      duration: 'Jun 2023 – Present',
       location: 'Chennai, India',
       type: 'Full-time',
       description: [
-        'Led development of AI-powered applications serving 50,000+ users',
-        'Architected scalable cloud solutions using AWS services',
-        'Mentored junior developers and established coding standards',
-        'Improved system performance by 40% through optimization'
+        'Collaborated with a cross-functional team to maintain a full-stack application built with ExtJS, ReactJS, Java, and Kotlin Spring Boot, proactively identifying and resolving issues to ensure smooth usability, optimal performance, and application security.',
+        'Maintained Kotlin Spring Boot applications integrated with AWS services—leveraging AWS Batch for efficient task scheduling, DynamoDB for optimized data storage and retrieval, and Parameter Store for secure configuration management—enhancing application performance, security, and scalability.',
+        'Worked with a large PostgreSQL database, writing complex SQL scripts to combine multiple tables and implement grouping and aggregation techniques for efficient data retrieval. Optimized query performance by fine-tuning SQL queries to handle large datasets effectively. Contributed to data analysis and data extraction tasks, ensuring data integrity and seamless integration across systems.',
+        'Utilized Jenkins to streamline and support the release process, ensuring smooth integration, seamless collaboration, and efficient software delivery across teams.',
+        'Built and maintained robust data ingestion systems in Java and Kotlin to extract and process data from LMS platforms such as Blackboard, Canvas, D2L, and Moodle.'
       ],
-      technologies: ['React', 'Node.js', 'Python', 'AWS', 'DynamoDB'],
-      achievements: ['Performance Leader Q3 2023', 'Innovation Award 2024']
+      technologies: ['ExtJS', 'ReactJS', 'Java', 'Kotlin', 'Spring Boot', 'AWS Batch', 'DynamoDB', 'Parameter Store', 'PostgreSQL', 'Jenkins'],
+      achievements: ['Team Awsome award 2024']
     },
     {
-      company: 'Innovation Labs',
-      position: 'Full Stack Developer',
-      duration: 'Jun 2021 - Dec 2021',
-      location: 'Remote',
-      type: 'Full-time',
+      company: 'Bounteous',
+      position: 'Software Development Intern',
+      duration: 'Feb 2023 – May 2023',
+      location: 'Chennai, India',
+      type: 'Internship',
       description: [
-        'Developed computer vision applications using OpenCV and Python',
-        'Built responsive web applications with React and Node.js',
-        'Implemented real-time data processing systems',
-        'Collaborated with cross-functional teams in agile environment'
+        'Gained hands-on experience with ReactJS and NodeJS for front-end and back-end development, building dynamic web applications, while also developing proficiency in Java and Kotlin with Spring Boot to create robust, scalable backend services.',
+        'Developed proof of concept (PoC) applications using ReactJS, NodeJS, Java, and Kotlin with Spring Boot, showcasing the seamless integration of front-end and back-end technologies to deliver a functional, scalable solution.'
       ],
-      technologies: ['Python', 'OpenCV', 'React', 'Node.js', 'MySQL'],
-      achievements: ['Best Project Award', 'Team Player Recognition']
+      technologies: ['ReactJS', 'NodeJS', 'Java', 'Kotlin', 'Spring Boot'],
+      achievements: ['Pre placement offer for full-time role']
     },
     {
-      company: 'SLB',
-      position: 'Software Developer Intern',
-      duration: 'Jan 2021 - May 2021',
+      company: 'Cameron Manufacturing India (P) Ltd – A Schlumberger Company',
+      position: 'Summer Intern',
+      duration: 'Jun 2022 – Aug 2022',
       location: 'Coimbatore, India',
       type: 'Internship',
       description: [
-        'Contributed to IoT dashboard development using Raspberry Pi',
-        'Implemented edge computing solutions for real-time monitoring',
-        'Participated in code reviews and testing procedures',
-        'Learned modern development practices and frameworks'
+        'Developed strong analytical abilities and valuable insights on working of ERP systems, focusing on extracting and analyzing data to improve process efficiencies.'
       ],
-      technologies: ['Raspberry Pi', 'Python', 'JavaScript', 'IoT'],
-      achievements: ['Outstanding Intern Award', 'Full-time Offer']
+      technologies: ['ERP', 'Data Analysis'],
+      achievements: ['Pre placement offer for full-time role']
     }
   ];
 

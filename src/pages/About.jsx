@@ -5,7 +5,7 @@ import SpotlightCard from '../components/SpotlightCard';
 import mugunthjc from '../assets/mugunthjc.PNG';
 import mugunth from '../assets/mugunth.jpg';
 
-const About = () => {
+const About = ({ setActiveSection }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -112,7 +112,7 @@ const About = () => {
               innerGradient="from-red-600 to-red-700"
               outerGradient="from-red-600/20 to-red-700/20"
               enableTilt={true}
-              onContactClick={() => console.log('Contact clicked')}
+              onContactClick={() => setActiveSection('contact')}
             />
           </motion.div>
           

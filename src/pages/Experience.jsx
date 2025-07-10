@@ -2,7 +2,7 @@ import { Calendar, MapPin, Building, Trophy, Zap, TrendingUp } from 'lucide-reac
 import { motion } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
 
-const Experience = () => {
+const Experience = ({ setActiveSection }) => {
   const experiences = [
     {
       company: 'Bounteous',

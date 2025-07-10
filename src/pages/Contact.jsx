@@ -6,7 +6,7 @@ import SpotlightCard from '../components/SpotlightCard';
 import emailjs from 'emailjs-com';
 import { RingLoader } from 'react-spinners';
 
-const Contact = () => {
+const Contact = ({ setActiveSection }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import SpotlightCard from '../components/SpotlightCard';
 
-const Skills = () => {
+const Skills = ({ setActiveSection }) => {
   const [animatedLevels, setAnimatedLevels] = useState({});
 
   const skillCategories = [

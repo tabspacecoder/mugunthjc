@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import SpotlightCard from '../components/SpotlightCard';
 
-const Projects = () => {
+const Projects = ({ setActiveSection }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   
   const categories = ['All', 'AI/ML', 'Web Development', 'IoT', 'Education'];

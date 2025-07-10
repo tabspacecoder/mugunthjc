@@ -18,19 +18,19 @@ function App() {
       case 'home':
         return <Hero setActiveSection={setActiveSection} />;
       case 'about':
-        return <About />;
+        return <About setActiveSection={setActiveSection}/>;
       case 'skills':
-        return <Skills />;
+        return <Skills setActiveSection={setActiveSection}/>;
       case 'projects':
-        return <Projects />;
+        return <Projects setActiveSection={setActiveSection}/>;
       case 'experience':
-        return <Experience />;
+        return <Experience setActiveSection={setActiveSection}/>;
       case 'education':
-        return <Education />;
+        return <Education setActiveSection={setActiveSection}/>;
       case 'contact':
-        return <Contact />;
+        return <Contact setActiveSection={setActiveSection}/>;
       default:
-        return <Hero />;
+        return <Hero setActiveSection={setActiveSection}/>;
     }
   };
 

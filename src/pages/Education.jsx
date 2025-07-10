@@ -2,7 +2,7 @@ import { GraduationCap, Award, Calendar, Trophy, BookOpen, Star } from 'lucide-r
 import { motion } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
 
-const Education = () => {
+const Education = ({ setActiveSection }) => {
   const education = [
     {
       institution: 'Dublin City University',

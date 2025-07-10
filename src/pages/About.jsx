@@ -1,6 +1,6 @@
 import { Heart, Target, Zap, Award, Code2 } from 'lucide-react';
 import ProfileCard from '../components/ProfileCard';
-import mugunthjc from '../assets/mugunthjc.png';
+import mugunthjc from '../assets/mugunthjc.PNG';
 import mugunth from '../assets/mugunth.jpg'; // Ensure this path is correct
 
 const About = () => {

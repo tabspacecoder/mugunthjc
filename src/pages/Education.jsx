@@ -11,20 +11,18 @@ const Education = () => {
       gpa: 'TBD',
       location: 'Dublin, Ireland',
       description: 'September 2025 Intake student focusing on advanced AI and machine learning techniques.',
-      coursework: ['Advanced Machine Learning', 'Deep Learning', 'Computer Vision', 'Natural Language Processing', 'AI Ethics', 'Research Methods'],
-      achievements: ['Scholarship of 5900 Eur', 'International Merit Award'],
-      status: 'upcoming'
+      coursework: ['TBD'],
+      achievements: ['Scholarship of 5900 Eur'],
     },
     {
       institution: 'Amrita Vishwa Vidyapeetham',
-      degree: 'Bachelor of Technology in Computer Science',
+      degree: 'Bachelor of Technology in Computer Science And Engineering',
       duration: '2019 - 2023',
       gpa: '8.18/10.0',
       location: 'Coimbatore, India',
       description: 'Strong foundation in computer science fundamentals with active participation in ASCII club and various technical projects.',
       coursework: ['Machine Learning', 'Neural Networks and Deep Learning', 'Computer Vision', 'Software Engineering', 'Mining of Massive Datasets', 'Fundamentals of Data Science', 'Computer Networks', 'Database Management Systems'],
-      achievements: ['Amrita Vidyanti Scholarship - 75%', 'Dean\'s List 2022', 'Best Project Award'],
-      status: 'completed'
+      achievements: ['Amrita Vidyanti Scholarship - 75%'],
     }
   ];
 
@@ -160,16 +158,6 @@ const Education = () => {
                   className="border-red-600/20 bg-black/40"
                   spotlightColor="rgba(220, 20, 60, 0.15)"
                 >
-                  {/* Status indicator */}
-                  <div className="absolute top-4 right-4">
-                    <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      edu.status === 'upcoming' 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-green-600 text-white'
-                    }`}>
-                      {edu.status === 'upcoming' ? 'Upcoming' : 'Completed'}
-                    </div>
-                  </div>
 
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                     <div className="flex-1">

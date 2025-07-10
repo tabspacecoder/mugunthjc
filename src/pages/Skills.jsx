@@ -1,6 +1,7 @@
-import { Code, Database, Globe, Server, Smartphone, Cpu, Shield, Zap } from 'lucide-react';
+import { Code, Database, Server, Cpu, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import SpotlightCard from '../components/SpotlightCard';
 
 const Skills = () => {
   const [animatedLevels, setAnimatedLevels] = useState({});
@@ -10,36 +11,31 @@ const Skills = () => {
       icon: <Code size={20} />,
       title: 'Frontend',
       skills: ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-      level: 95,
-      color: 'from-red-500 to-red-600'
+      level: 95
     },
     {
       icon: <Server size={20} />,
       title: 'Backend',
       skills: ['Node.js', 'Python', 'Java Spring Boot', 'REST APIs'],
-      level: 90,
-      color: 'from-orange-500 to-red-500'
+      level: 90
     },
     {
       icon: <Database size={20} />,
       title: 'Database & Cloud',
       skills: ['PostgreSQL', 'DynamoDB', 'AWS', 'Docker'],
-      level: 85,
-      color: 'from-yellow-500 to-orange-500'
+      level: 85
     },
     {
       icon: <Cpu size={20} />,
       title: 'AI & ML',
       skills: ['Python', 'OpenCV', 'Computer Vision', 'Machine Learning', 'Deep Learning', 'NLP'],
-      level: 88,
-      color: 'from-green-500 to-yellow-500'
+      level: 88
     },
     {
       icon: <Cpu size={20} />,
       title: 'Programming Languages',
       skills: ['Java', 'Kotlin', 'Python', 'C++', 'Dart', 'JavaScript'],
-      level: 88,
-      color: 'from-blue-500 to-green-500'
+      level: 88
     }
   ];
 
@@ -76,22 +72,11 @@ const Skills = () => {
     }
   };
 
-  const skillVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Minimal background particles */}
       <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 50 }, (_, i) => (
+        {Array.from({ length: 20 }, (_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-red-500 rounded-full"
@@ -100,7 +85,7 @@ const Skills = () => {
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -20, 0],
+              y: [0, -10, 0],
               opacity: [0.3, 1, 0.3],
             }}
             transition={{
@@ -119,32 +104,13 @@ const Skills = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <motion.h2 
-            className="text-4xl font-bold text-white mb-4"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Skills & Technologies
-          </motion.h2>
-          <motion.div 
-            className="flex items-center justify-center space-x-3 mb-4"
-            initial={{ width: 0 }}
-            animate={{ width: 'auto' }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <h2 className="text-3xl font-bold text-white mb-4">Skills & Technologies</h2>
+          <div className="flex items-center justify-center space-x-3 mb-4">
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
             <Zap className="text-red-600" size={18} />
             <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
-          </motion.div>
-          <motion.p 
-            className="text-lg text-gray-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            Technologies I work with
-          </motion.p>
+          </div>
+          <p className="text-lg text-gray-400">Technologies I work with</p>
         </motion.div>
 
         <motion.div 
@@ -157,88 +123,50 @@ const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-                transition: { duration: 0.3 }
-              }}
-              className="ferrari-card rounded-xl p-6 relative overflow-hidden group"
+              className="relative"
             >
-              {/* Animated background gradient */}
-              <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-                style={{
-                  background: `linear-gradient(135deg, #DC143C, #FF1744)`
-                }}
-              />
-              
-              <motion.div 
-                className="w-12 h-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center mb-4 text-white relative z-10"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
+              <SpotlightCard 
+                className="p-6 border-red-600/20 bg-black/40"
+                spotlightColor="rgba(220, 20, 60, 0.15)"
               >
-                {category.icon}
-              </motion.div>
-              
-              <h3 className="text-lg font-semibold text-white mb-4 relative z-10">{category.title}</h3>
-              
-              <div className="mb-6 relative z-10">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-gray-400">Proficiency</span>
-                  <motion.span 
-                    className="text-red-600 font-semibold text-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    {animatedLevels[index] || 0}%
-                  </motion.span>
+                <div className="w-12 h-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center mb-4 text-white">
+                  {category.icon}
                 </div>
-                <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
-                  <motion.div
-                    className={`bg-gradient-to-r ${category.color} h-2 rounded-full relative`}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${animatedLevels[index] || 0}%` }}
-                    transition={{ 
-                      duration: 1.5, 
-                      delay: 0.5 + index * 0.1,
-                      ease: "easeOut"
-                    }}
-                  >
+                
+                <h3 className="text-lg font-semibold text-white mb-4">{category.title}</h3>
+                
+                <div className="mb-6">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm text-gray-400">Proficiency</span>
+                    <span className="text-red-600 font-semibold text-sm">
+                      {animatedLevels[index] || 0}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
                     <motion.div
-                      className="absolute inset-0 bg-white opacity-30"
-                      animate={{ x: ['-100%', '100%'] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: 1 + index * 0.1
+                      className="bg-gradient-to-r from-red-600 to-red-700 h-2 rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${animatedLevels[index] || 0}%` }}
+                      transition={{ 
+                        duration: 1.5, 
+                        delay: 0.5 + index * 0.1,
+                        ease: "easeOut"
                       }}
                     />
-                  </motion.div>
+                  </div>
                 </div>
-              </div>
-              
-              <motion.div 
-                className="flex flex-wrap gap-2 relative z-10"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skillIndex}
-                    variants={skillVariants}
-                    whileHover={{ 
-                      scale: 1.1,
-                      backgroundColor: 'rgba(220, 20, 60, 0.2)',
-                      color: '#ff4d6d'
-                    }}
-                    className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-xs cursor-pointer transition-all duration-300"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </motion.div>
+                
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span
+                      key={skillIndex}
+                      className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-xs"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>
@@ -249,30 +177,18 @@ const Skills = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <div className="ferrari-card rounded-xl p-8 max-w-2xl mx-auto relative overflow-hidden">
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-red-700/10"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-            <h3 className="text-xl font-bold text-white mb-4 relative z-10">Ready to Build</h3>
-            <p className="text-gray-300 leading-relaxed mb-6 relative z-10">
+          <SpotlightCard 
+            className="max-w-2xl mx-auto border-red-600/20 bg-black/40"
+            spotlightColor="rgba(220, 20, 60, 0.15)"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Ready to Build</h3>
+            <p className="text-gray-300 leading-relaxed mb-6">
               Let's create something exceptional with cutting-edge technology and clean, efficient code.
             </p>
-            <motion.button 
-              className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300 relative z-10"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <button className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300">
               Start a Project
-            </motion.button>
-          </div>
+            </button>
+          </SpotlightCard>
         </motion.div>
       </div>
     </div>

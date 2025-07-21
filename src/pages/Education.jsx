@@ -1,6 +1,5 @@
 import { GraduationCap, Award, Calendar, Trophy, BookOpen, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
-import SpotlightCard from '../components/SpotlightCard';
 
 const Education = ({ setActiveSection }) => {
   const education = [
@@ -84,7 +83,7 @@ const Education = ({ setActiveSection }) => {
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Minimal floating academic elements */}
       <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 10 }, (_, i) => (
+        {Array.from({ length: 8 }, (_, i) => (
           <motion.div
             key={i}
             className="absolute"
@@ -93,9 +92,9 @@ const Education = ({ setActiveSection }) => {
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -20, 0],
+              y: [0, -15, 0],
               rotate: [0, 180, 360],
-              opacity: [0.3, 1, 0.3],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
               duration: 6 + Math.random() * 4,
@@ -104,11 +103,11 @@ const Education = ({ setActiveSection }) => {
             }}
           >
             {i % 3 === 0 ? (
-              <GraduationCap size={12} className="text-red-500" />
+              <GraduationCap size={10} className="text-blue-500" />
             ) : i % 3 === 1 ? (
-              <BookOpen size={10} className="text-red-400" />
+              <BookOpen size={8} className="text-blue-400" />
             ) : (
-              <Star size={8} className="text-red-600" />
+              <Star size={6} className="text-blue-600" />
             )}
           </motion.div>
         ))}
@@ -123,9 +122,9 @@ const Education = ({ setActiveSection }) => {
         >
           <h2 className="text-3xl font-bold text-white mb-4">Education & Certifications</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
-            <GraduationCap className="text-red-600" size={18} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
+            <GraduationCap className="text-blue-600" size={18} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
           </div>
           <p className="text-lg text-gray-400">My academic journey and professional development</p>
         </motion.div>
@@ -138,7 +137,7 @@ const Education = ({ setActiveSection }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <GraduationCap size={24} className="text-red-600" />
+            <GraduationCap size={24} className="text-blue-600" />
             <span>Education</span>
           </motion.h3>
           
@@ -154,15 +153,11 @@ const Education = ({ setActiveSection }) => {
                 variants={educationVariants}
                 className="relative"
               >
-                <SpotlightCard 
-                  className="border-red-600/20 bg-black/40"
-                  spotlightColor="rgba(220, 20, 60, 0.15)"
-                >
-
+                <div className="tech-card">
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                     <div className="flex-1">
                       <h4 className="text-xl font-bold text-white mb-2">{edu.degree}</h4>
-                      <p className="text-red-600 font-semibold text-lg">{edu.institution}</p>
+                      <p className="text-blue-600 font-semibold text-lg">{edu.institution}</p>
                       <p className="text-gray-300">{edu.location}</p>
                     </div>
                     <div className="mt-4 lg:mt-0 lg:text-right">
@@ -199,7 +194,7 @@ const Education = ({ setActiveSection }) => {
                   
                   <div>
                     <h5 className="text-white font-semibold mb-2 flex items-center space-x-2">
-                      <BookOpen size={16} className="text-red-600" />
+                      <BookOpen size={16} className="text-blue-600" />
                       <span>Key Coursework</span>
                     </h5>
                     <div className="flex flex-wrap gap-2">
@@ -213,7 +208,7 @@ const Education = ({ setActiveSection }) => {
                       ))}
                     </div>
                   </div>
-                </SpotlightCard>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -227,7 +222,7 @@ const Education = ({ setActiveSection }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Award size={24} className="text-red-600" />
+            <Award size={24} className="text-blue-600" />
             <span>Professional Certifications</span>
           </motion.h3>
           
@@ -243,19 +238,16 @@ const Education = ({ setActiveSection }) => {
                 variants={certVariants}
                 className="relative"
               >
-                <SpotlightCard 
-                  className="border-red-600/20 bg-black/40"
-                  spotlightColor="rgba(220, 20, 60, 0.15)"
-                >
+                <div className="tech-card">
                   <div className="flex items-start justify-between mb-3">
                     <h4 className="text-lg font-bold text-white flex-1">{cert.name}</h4>
                     <div className="bg-purple-600 text-white px-2 py-1 rounded text-xs font-semibold">
                       {cert.level}
                     </div>
                   </div>
-                  <p className="text-red-600 font-semibold mb-2">{cert.issuer}</p>
+                  <p className="text-blue-600 font-semibold mb-2">{cert.issuer}</p>
                   <span className="text-gray-300">{cert.date}</span>
-                </SpotlightCard>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -267,23 +259,20 @@ const Education = ({ setActiveSection }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <SpotlightCard 
-            className="border-red-600/20 bg-black/40"
-            spotlightColor="rgba(220, 20, 60, 0.15)"
-          >
+          <div className="tech-card">
             <h3 className="text-2xl font-bold text-white mb-4">Continuous Learning</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Committed to lifelong learning and staying updated with the latest technologies and industry trends.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <button className="btn-primary px-6 py-3 rounded-lg font-medium transition-all duration-300">
                 View Resume
               </button>
-              <button className="ferrari-button-outline px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              <button className="btn-secondary px-6 py-3 rounded-lg font-medium transition-all duration-300">
                 Academic Transcripts
               </button>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { ExternalLink, Github, Star, Zap, Eye, GitBranch, Users, Calendar, Code2, TrendingUp, Layers, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import SpotlightCard from '../components/SpotlightCard';
 
 const Projects = ({ setActiveSection }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -113,7 +112,7 @@ const Projects = ({ setActiveSection }) => {
   };
 
   const projectVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -128,7 +127,7 @@ const Projects = ({ setActiveSection }) => {
     switch (complexity) {
       case 'Beginner': return 'bg-green-600';
       case 'Intermediate': return 'bg-yellow-600';
-      case 'Advanced': return 'bg-red-600';
+      case 'Advanced': return 'bg-blue-600';
       default: return 'bg-gray-600';
     }
   };
@@ -144,32 +143,6 @@ const Projects = ({ setActiveSection }) => {
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Enhanced background animations */}
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute top-1/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"
-          animate={{
-            x: ['-100%', '100%'],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        <motion.div
-          className="absolute top-3/4 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent"
-          animate={{
-            x: ['100%', '-100%'],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <motion.div 
@@ -180,9 +153,9 @@ const Projects = ({ setActiveSection }) => {
         >
           <h2 className="text-4xl font-bold text-white mb-4">Project Portfolio</h2>
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
-            <Rocket className="text-red-600" size={20} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
+            <Rocket className="text-blue-600" size={20} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
           </div>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Showcasing innovative solutions and cutting-edge technology implementations
@@ -196,15 +169,15 @@ const Projects = ({ setActiveSection }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="flex flex-wrap gap-2 p-2 bg-black/40 rounded-2xl border border-red-600/20">
+          <div className="flex flex-wrap gap-2 p-2 bg-gray-800/50 rounded-2xl border border-gray-700">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-red-600 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-red-600/20'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-400 hover:text-white hover:bg-blue-600/20'
                 }`}
               >
                 {category}
@@ -221,55 +194,43 @@ const Projects = ({ setActiveSection }) => {
           animate="visible"
         >
           <motion.div variants={projectVariants}>
-            <SpotlightCard 
-              className="p-4 border-red-600/20 bg-black/40 text-center"
-              spotlightColor="rgba(220, 20, 60, 0.15)"
-            >
+            <div className="tech-card p-4 text-center">
               <div className="flex items-center justify-center mb-2">
-                <Layers size={20} className="text-red-600" />
+                <Layers size={20} className="text-blue-600" />
               </div>
               <div className="text-2xl font-bold text-white">{projects.length}</div>
               <div className="text-gray-400 text-sm">Total Projects</div>
-            </SpotlightCard>
+            </div>
           </motion.div>
 
           <motion.div variants={projectVariants}>
-            <SpotlightCard 
-              className="p-4 border-red-600/20 bg-black/40 text-center"
-              spotlightColor="rgba(220, 20, 60, 0.15)"
-            >
+            <div className="tech-card p-4 text-center">
               <div className="flex items-center justify-center mb-2">
                 <Star size={20} className="text-yellow-500" />
               </div>
               <div className="text-2xl font-bold text-white">137</div>
               <div className="text-gray-400 text-sm">Total Stars</div>
-            </SpotlightCard>
+            </div>
           </motion.div>
 
           <motion.div variants={projectVariants}>
-            <SpotlightCard 
-              className="p-4 border-red-600/20 bg-black/40 text-center"
-              spotlightColor="rgba(220, 20, 60, 0.15)"
-            >
+            <div className="tech-card p-4 text-center">
               <div className="flex items-center justify-center mb-2">
                 <GitBranch size={20} className="text-green-500" />
               </div>
               <div className="text-2xl font-bold text-white">32</div>
               <div className="text-gray-400 text-sm">Total Forks</div>
-            </SpotlightCard>
+            </div>
           </motion.div>
 
           <motion.div variants={projectVariants}>
-            <SpotlightCard 
-              className="p-4 border-red-600/20 bg-black/40 text-center"
-              spotlightColor="rgba(220, 20, 60, 0.15)"
-            >
+            <div className="tech-card p-4 text-center">
               <div className="flex items-center justify-center mb-2">
                 <Code2 size={20} className="text-blue-500" />
               </div>
               <div className="text-2xl font-bold text-white">353</div>
               <div className="text-gray-400 text-sm">Total Commits</div>
-            </SpotlightCard>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -282,7 +243,7 @@ const Projects = ({ setActiveSection }) => {
             animate="visible"
           >
             <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-2">
-              <Star className="text-red-600" size={24} />
+              <Star className="text-blue-600" size={24} />
               <span>Featured Projects</span>
             </h3>
             
@@ -293,15 +254,12 @@ const Projects = ({ setActiveSection }) => {
                   variants={projectVariants}
                   className="relative group"
                 >
-                  <SpotlightCard 
-                    className="p-0 border-red-600/20 bg-black/40 overflow-hidden"
-                    spotlightColor="rgba(220, 20, 60, 0.15)"
-                  >
+                  <div className="tech-card p-0 overflow-hidden">
                     <div className="relative overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                       
@@ -329,7 +287,7 @@ const Projects = ({ setActiveSection }) => {
 
                       {/* Category Badge */}
                       <div className="absolute bottom-4 left-4">
-                        <div className="bg-red-600/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        <div className="bg-blue-600/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
                           {project.category}
                         </div>
                       </div>
@@ -359,7 +317,7 @@ const Projects = ({ setActiveSection }) => {
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 bg-red-600/20 text-red-400 rounded-full text-xs font-medium border border-red-600/30"
+                            className="px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs font-medium border border-blue-600/30"
                           >
                             {tech}
                           </span>
@@ -372,14 +330,14 @@ const Projects = ({ setActiveSection }) => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
+                            className="flex items-center space-x-1 text-gray-300 hover:text-blue-600 transition-colors text-sm"
                           >
                             <Github size={16} />
                             <span>Code</span>
                           </a>
                           <a
                             href={project.live}
-                            className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
+                            className="flex items-center space-x-1 text-blue-600 hover:text-blue-400 transition-colors text-sm"
                           >
                             <ExternalLink size={16} />
                             <span>Demo</span>
@@ -391,7 +349,7 @@ const Projects = ({ setActiveSection }) => {
                         </div>
                       </div>
                     </div>
-                  </SpotlightCard>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -407,7 +365,7 @@ const Projects = ({ setActiveSection }) => {
             animate="visible"
           >
             <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-2">
-              <TrendingUp className="text-red-600" size={24} />
+              <TrendingUp className="text-blue-600" size={24} />
               <span>Other Projects</span>
             </h3>
             
@@ -418,15 +376,12 @@ const Projects = ({ setActiveSection }) => {
                   variants={projectVariants}
                   className="relative group"
                 >
-                  <SpotlightCard 
-                    className="p-0 border-red-600/20 bg-black/40 overflow-hidden"
-                    spotlightColor="rgba(220, 20, 60, 0.15)"
-                  >
+                  <div className="tech-card p-0 overflow-hidden">
                     <div className="relative overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                       
@@ -441,7 +396,7 @@ const Projects = ({ setActiveSection }) => {
                       </div>
 
                       <div className="absolute bottom-3 right-3">
-                        <div className="bg-red-600/80 text-white px-2 py-1 rounded text-xs">
+                        <div className="bg-blue-600/80 text-white px-2 py-1 rounded text-xs">
                           {project.category}
                         </div>
                       </div>
@@ -468,14 +423,14 @@ const Projects = ({ setActiveSection }) => {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-1 text-gray-300 hover:text-red-600 transition-colors text-sm"
+                            className="flex items-center space-x-1 text-gray-300 hover:text-blue-600 transition-colors text-sm"
                           >
                             <Github size={14} />
                             <span>Code</span>
                           </a>
                           <a
                             href={project.live}
-                            className="flex items-center space-x-1 text-red-600 hover:text-red-400 transition-colors text-sm"
+                            className="flex items-center space-x-1 text-blue-600 hover:text-blue-400 transition-colors text-sm"
                           >
                             <ExternalLink size={14} />
                             <span>Demo</span>
@@ -487,7 +442,7 @@ const Projects = ({ setActiveSection }) => {
                         </div>
                       </div>
                     </div>
-                  </SpotlightCard>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -501,10 +456,7 @@ const Projects = ({ setActiveSection }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <SpotlightCard 
-            className="max-w-3xl mx-auto border-red-600/20 bg-black/40"
-            spotlightColor="rgba(220, 20, 60, 0.15)"
-          >
+          <div className="tech-card max-w-3xl mx-auto">
             <div className="text-center">
               <h3 className="text-2xl font-bold text-white mb-4">Explore More on GitHub</h3>
               <p className="text-gray-300 leading-relaxed mb-6">
@@ -524,13 +476,13 @@ const Projects = ({ setActiveSection }) => {
                 href="https://github.com/mugunthjc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ferrari-button px-8 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center space-x-2"
+                className="btn-primary px-8 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center space-x-2"
               >
                 <Github size={18} />
                 <span>View GitHub Profile</span>
               </a>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
       </div>
     </div>

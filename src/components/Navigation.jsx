@@ -15,15 +15,15 @@ const Navigation = ({ activeSection, setActiveSection }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-red-600/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-9 h-8 bg-gradient-to-r from-red-600 to-red-700 rounded flex items-center justify-center">
+              <div className="w-9 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-sm">MJC</span>
               </div>
-              <span className="text-lg font-bold text-white">Portfolio</span>
+              <span className="text-lg font-semibold text-white">Portfolio</span>
             </div>
           </div>
           
@@ -35,8 +35,8 @@ const Navigation = ({ activeSection, setActiveSection }) => {
                   onClick={() => setActiveSection(item.id)}
                   className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
                     activeSection === item.id
-                      ? 'text-red-600'
-                      : 'text-gray-300 hover:text-red-400'
+                      ? 'text-blue-500 border-b-2 border-blue-500'
+                      : 'text-gray-300 hover:text-blue-400'
                   }`}
                 >
                   {item.label}
@@ -48,7 +48,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-red-600 hover:bg-black/50"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-500 hover:bg-gray-800"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -58,7 +58,7 @@ const Navigation = ({ activeSection, setActiveSection }) => {
 
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95 backdrop-blur-sm border-t border-red-600/30">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95 backdrop-blur-sm border-t border-gray-800">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -68,8 +68,8 @@ const Navigation = ({ activeSection, setActiveSection }) => {
                 }}
                 className={`block px-3 py-2 text-base font-medium w-full text-left transition-colors ${
                   activeSection === item.id
-                    ? 'text-red-600'
-                    : 'text-gray-300 hover:text-red-400'
+                    ? 'text-blue-500'
+                    : 'text-gray-300 hover:text-blue-400'
                 }`}
               >
                 {item.label}

@@ -11,14 +11,14 @@ const Hero = ({ setActiveSection }) => {
       <div className="max-w-4xl mx-auto text-center">
         {/* Minimal Avatar */}
         <div className="relative w-24 h-24 mx-auto mb-8">
-          <div className="w-full h-full bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+          <div className="w-full h-full bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-lg">
             <img
               src={mugunth}
               alt="Mugunth Jangamasamudram Chandirasekaran"
               className="w-full h-full rounded-full object-cover"
             />
           </div>
-          <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-700 rounded-full blur opacity-20"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full blur opacity-20"></div>
           <div className="absolute top-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-black"></div>
         </div>
         
@@ -39,9 +39,9 @@ const Hero = ({ setActiveSection }) => {
             onLetterAnimationComplete={handleAnimationComplete}
           />
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
-            <Code className="text-red-600" size={18} />
-            <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
+            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
+            <Code className="text-blue-600" size={18} />
+            <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
           </div>
           <p className="text-xl text-gray-300 mb-6">
             Software Engineer & AI Specialist
@@ -58,23 +58,23 @@ const Hero = ({ setActiveSection }) => {
             href="https://github.com/mugunthjc"
             target="_blank"
             rel="noopener noreferrer"
-            className="ferrari-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
+            className="tech-card p-3 rounded-lg transition-all duration-300 hover-lift"
           >
-            <Github size={20} className="text-gray-300 ferrari-hover" />
+            <Github size={20} className="text-gray-300 hover:text-blue-400 transition-colors" />
           </a>
           <a
             href="https://linkedin.com/in/mugunthjc"
             target="_blank"
             rel="noopener noreferrer"
-            className="ferrari-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
+            className="tech-card p-3 rounded-lg transition-all duration-300 hover-lift"
           >
-            <Linkedin size={20} className="text-gray-300 ferrari-hover" />
+            <Linkedin size={20} className="text-gray-300 hover:text-blue-400 transition-colors" />
           </a>
           <a
             href="mailto:jc.mugunth@gmail.com"
-            className="ferrari-card p-3 rounded-lg transition-all duration-300 hover:scale-110"
+            className="tech-card p-3 rounded-lg transition-all duration-300 hover-lift"
           >
-            <Mail size={20} className="text-gray-300 ferrari-hover" />
+            <Mail size={20} className="text-gray-300 hover:text-blue-400 transition-colors" />
           </a>
         </div>
 
@@ -82,27 +82,27 @@ const Hero = ({ setActiveSection }) => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <button 
             onClick={() => setActiveSection('projects')}
-            className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300"
+            className="btn-primary px-6 py-3 rounded-lg font-medium transition-all duration-300"
           >
             View Work
           </button>
-          <button className="ferrari-button-outline px-6 py-3 rounded-lg font-medium transition-all duration-300">
+          <button className="btn-secondary px-6 py-3 rounded-lg font-medium transition-all duration-300">
             Get Resume
           </button>
         </div>
 
         {/* Minimal Stats */}
         <div className="grid grid-cols-3 gap-6 max-w-md mx-auto mb-16">
-          <div className="ferrari-card p-4 rounded-lg text-center">
-            <div className="text-xl font-bold text-red-600 mb-1">3+</div>
+          <div className="tech-card p-4 rounded-lg text-center">
+            <div className="text-xl font-bold text-blue-600 mb-1">3+</div>
             <div className="text-gray-400 text-sm">Years</div>
           </div>
-          <div className="ferrari-card p-4 rounded-lg text-center">
-            <div className="text-xl font-bold text-red-600 mb-1">15+</div>
+          <div className="tech-card p-4 rounded-lg text-center">
+            <div className="text-xl font-bold text-blue-600 mb-1">15+</div>
             <div className="text-gray-400 text-sm">Projects</div>
           </div>
-          <div className="ferrari-card p-4 rounded-lg text-center">
-            <div className="text-xl font-bold text-red-600 mb-1">100%</div>
+          <div className="tech-card p-4 rounded-lg text-center">
+            <div className="text-xl font-bold text-blue-600 mb-1">100%</div>
             <div className="text-gray-400 text-sm">Quality</div>
           </div>
         </div>
@@ -115,7 +115,7 @@ const Hero = ({ setActiveSection }) => {
           }}
         >
           <span className="text-gray-500 text-sm">Explore</span>
-          <ChevronDown size={20} className="text-red-600" />
+          <ChevronDown size={20} className="text-blue-600" />
         </div>
         </div>
       </div>

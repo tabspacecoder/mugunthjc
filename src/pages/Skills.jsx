@@ -1,7 +1,6 @@
 import { Code, Database, Server, Cpu, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import SpotlightCard from '../components/SpotlightCard';
 
 const Skills = ({ setActiveSection }) => {
   const [animatedLevels, setAnimatedLevels] = useState({});
@@ -76,17 +75,17 @@ const Skills = ({ setActiveSection }) => {
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Minimal background particles */}
       <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 20 }, (_, i) => (
+        {Array.from({ length: 12 }, (_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-red-500 rounded-full"
+            className="absolute w-1 h-1 bg-blue-500 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -10, 0],
-              opacity: [0.3, 1, 0.3],
+              y: [0, -8, 0],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
               duration: 3 + Math.random() * 2,
@@ -106,9 +105,9 @@ const Skills = ({ setActiveSection }) => {
         >
           <h2 className="text-3xl font-bold text-white mb-4">Skills & Technologies</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-red-600"></div>
-            <Zap className="text-red-600" size={18} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-red-600"></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
+            <Zap className="text-blue-600" size={18} />
+            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
           </div>
           <p className="text-lg text-gray-400">Technologies I work with</p>
         </motion.div>
@@ -125,11 +124,8 @@ const Skills = ({ setActiveSection }) => {
               variants={itemVariants}
               className="relative"
             >
-              <SpotlightCard 
-                className="p-6 border-red-600/20 bg-black/40"
-                spotlightColor="rgba(220, 20, 60, 0.15)"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg flex items-center justify-center mb-4 text-white">
+              <div className="tech-card p-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mb-4 text-white">
                   {category.icon}
                 </div>
                 
@@ -138,13 +134,13 @@ const Skills = ({ setActiveSection }) => {
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-400">Proficiency</span>
-                    <span className="text-red-600 font-semibold text-sm">
+                    <span className="text-blue-600 font-semibold text-sm">
                       {animatedLevels[index] || 0}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+                  <div className="progress-bar h-2">
                     <motion.div
-                      className="bg-gradient-to-r from-red-600 to-red-700 h-2 rounded-full"
+                      className="progress-fill"
                       initial={{ width: 0 }}
                       animate={{ width: `${animatedLevels[index] || 0}%` }}
                       transition={{ 
@@ -166,7 +162,7 @@ const Skills = ({ setActiveSection }) => {
                     </span>
                   ))}
                 </div>
-              </SpotlightCard>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -177,18 +173,15 @@ const Skills = ({ setActiveSection }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <SpotlightCard 
-            className="max-w-2xl mx-auto border-red-600/20 bg-black/40"
-            spotlightColor="rgba(220, 20, 60, 0.15)"
-          >
+          <div className="tech-card max-w-2xl mx-auto">
             <h3 className="text-xl font-bold text-white mb-4">Ready to Build</h3>
             <p className="text-gray-300 leading-relaxed mb-6">
               Let's create something exceptional with cutting-edge technology and clean, efficient code.
             </p>
-            <button className="ferrari-button px-6 py-3 rounded-lg font-medium transition-all duration-300">
+            <button className="btn-primary px-6 py-3 rounded-lg font-medium transition-all duration-300">
               Start a Project
             </button>
-          </SpotlightCard>
+          </div>
         </motion.div>
       </div>
     </div>

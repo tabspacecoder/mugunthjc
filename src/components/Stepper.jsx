@@ -122,7 +122,7 @@ export default function Stepper({
               )}
               <button
                 onClick={isLastStep ? handleComplete : handleNext}
-                className="duration-350 flex items-center justify-center rounded-full hover:bg-gray-200 bg-white py-1.5 px-3.5 font-medium tracking-tight text-black transition space-x-2 hover:scale-105"
+                className="duration-350 flex items-center justify-center rounded-full hover:bg-purple-600 bg-purple-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105"
                 {...nextButtonProps}
     >
                 {isLastStep ? "Send Message" : nextButtonText}

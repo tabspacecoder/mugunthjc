@@ -122,7 +122,7 @@ export default function Stepper({
               )}
               <button
                 onClick={isLastStep ? handleComplete : handleNext}
-                className="duration-350 flex items-center justify-center rounded-full hover:bg-red-800 bg-red-600 py-1.5 px-3.5 font-medium tracking-tight text-white transition space-x-2 hover:scale-105"
+                className="duration-350 flex items-center justify-center rounded-full hover:bg-gray-200 bg-white py-1.5 px-3.5 font-medium tracking-tight text-black transition space-x-2 hover:scale-105"
                 {...nextButtonProps}
     >
                 {isLastStep ? "Send Message" : nextButtonText}
@@ -219,8 +219,8 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
       <motion.div
         variants={{
           inactive: { scale: 1, backgroundColor: "#222", color: "#C60008" },
-          active: { scale: 1, backgroundColor: "#C60008", color: "#C60008" },
-          complete: { scale: 1, backgroundColor: "#C60008", color: "#8200DB" },
+          active: { scale: 1, backgroundColor: "#FFFFFF", color: "#FFFFFF" },
+          complete: { scale: 1, backgroundColor: "#FFFFFF", color: "#000000" },
         }}
         transition={{ duration: 0.3 }}
         className="flex h-8 w-8 items-center justify-center rounded-full font-semibold"
@@ -228,7 +228,7 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
         {status === "complete" ? (
           <CheckIcon className="h-4 w-4 text-black" />
         ) : status === "active" ? (
-          <div className="h-3 w-3 rounded-full bg-[#060010]" />
+          <div className="h-3 w-3 rounded-full bg-black" />
         ) : (
           <span className="text-sm">{step}</span>
         )}
@@ -240,11 +240,11 @@ function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators }
 function StepConnector({ isComplete }) {
   const lineVariants = {
     incomplete: { width: 0, backgroundColor: "transparent" },
-    complete: { width: "100%", backgroundColor: "#3B82F6" },
+    complete: { width: "100%", backgroundColor: "#FFFFFF" },
   };
 
   return (
-    <div className="relative mx-2 h-0.5 flex-1 overflow-hidden rounded bg-neutral-600 pointer-events-none">
+    <div className="relative mx-2 h-0.5 flex-1 overflow-hidden rounded bg-gray-700 pointer-events-none">
       <motion.div
         className="absolute left-0 top-0 h-full"
         variants={lineVariants}

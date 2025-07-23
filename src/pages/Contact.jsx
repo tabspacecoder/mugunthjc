@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Zap, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SpotlightCard from '../components/SpotlightCard';
 import Stepper, { Step } from '../components/Stepper.jsx';
 import emailjs from 'emailjs-com';
 import { RingLoader } from 'react-spinners';
@@ -114,69 +115,27 @@ const Contact = ({ setActiveSection }) => {
     }
   };
 
-  const socialVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Minimal floating communication elements */}
-      <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 8 }, (_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -15, 0],
-              rotate: [0, 360],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 6 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-            }}
-          >
-            {i % 3 === 0 ? (
-              <Mail size={8} className="text-blue-500" />
-            ) : i % 3 === 1 ? (
-              <Send size={6} className="text-blue-400" />
-            ) : (
-              <MessageSquare size={10} className="text-blue-600" />
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <div className="min-h-screen section-spacing">
+      <div className="page-container">
+        {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="content-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
-            <MessageSquare className="text-blue-600" size={18} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
+            <div className="w-12 h-0.5 bg-white"></div>
+            <MessageSquare className="text-white" size={18} />
+            <div className="w-12 h-0.5 bg-white"></div>
           </div>
           <p className="text-lg text-gray-400">Let's discuss your next project</p>
         </motion.div>
 
         <motion.div 
-          className="grid lg:grid-cols-2 gap-12"
+          className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -191,15 +150,15 @@ const Contact = ({ setActiveSection }) => {
                   key={index}
                   variants={itemVariants}
                 >
-                  <div className="tech-card flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center text-white">
+                  <SpotlightCard className="flex items-center space-x-4 p-4">
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black">
                       {info.icon}
                     </div>
                     <div>
                       <h4 className="text-white font-semibold">{info.title}</h4>
                       <p className="text-gray-300 text-sm">{info.value}</p>
                     </div>
-                  </div>
+                  </SpotlightCard>
                 </motion.div>
               ))}
             </div>
@@ -209,27 +168,26 @@ const Contact = ({ setActiveSection }) => {
               variants={itemVariants}
             >
               <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
-                <Zap className="text-blue-600" size={18} />
+                <Send className="text-white" size={18} />
                 <span>Connect With Me</span>
               </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <motion.a
+                  <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg text-white transition-all duration-300 hover-lift"
-                    variants={socialVariants}
+                    className="p-3 bg-white text-black rounded-lg hover-lift transition-all duration-300"
                   >
                     {social.icon}
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <div className="tech-card">
+              <SpotlightCard>
                 <h4 className="text-white font-semibold mb-4">Availability Status</h4>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
@@ -253,7 +211,7 @@ const Contact = ({ setActiveSection }) => {
                     <span className="text-gray-300 text-sm">Responds within 24 hours</span>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           </motion.div>
 
@@ -283,7 +241,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-blue-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                        className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -303,7 +261,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 pb-3 py-3 bg-gray-800/50 border border-blue-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                        className="w-full px-4 pb-3 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -323,7 +281,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 pb-3 py-3 bg-gray-800/50 border border-blue-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                        className="w-full px-4 pb-3 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
                         placeholder="Project collaboration, Job opportunity, etc."
                       />
                     </div>
@@ -342,7 +300,7 @@ const Contact = ({ setActiveSection }) => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full pb-3 px-4 py-3 bg-gray-800/50 border border-blue-600/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300 resize-none"
+                      className="w-full pb-3 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 resize-none"
                       placeholder="Tell me about your project..."
                     />
                   </div>
@@ -351,7 +309,7 @@ const Contact = ({ setActiveSection }) => {
             ) : (
               <div className="flex items-center justify-center py-20">
                 <div className="text-center">
-                  <RingLoader loading color="#3B82F6" size={60} />
+                  <RingLoader loading color="#FFFFFF" size={60} />
                   <p className="text-white mt-4">Sending your message...</p>
                 </div>
               </div>

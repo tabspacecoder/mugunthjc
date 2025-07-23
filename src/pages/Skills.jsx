@@ -1,6 +1,7 @@
 import { Code, Database, Server, Cpu, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import SpotlightCard from '../components/SpotlightCard';
 
 const Skills = ({ setActiveSection }) => {
   const [animatedLevels, setAnimatedLevels] = useState({});
@@ -72,46 +73,25 @@ const Skills = ({ setActiveSection }) => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Minimal background particles */}
-      <div className="absolute inset-0 opacity-5">
-        {Array.from({ length: 12 }, (_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-500 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -8, 0],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <div className="min-h-screen section-spacing">
+      <div className="page-container">
+        {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="content-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-white mb-4">Skills & Technologies</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Skills & Technologies</h2>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-600"></div>
-            <Zap className="text-blue-600" size={18} />
-            <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-blue-600"></div>
+            <div className="w-12 h-0.5 bg-white"></div>
+            <Zap className="text-white" size={18} />
+            <div className="w-12 h-0.5 bg-white"></div>
           </div>
           <p className="text-lg text-gray-400">Technologies I work with</p>
         </motion.div>
 
+        {/* Skills Grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           variants={containerVariants}
@@ -122,10 +102,9 @@ const Skills = ({ setActiveSection }) => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative"
             >
-              <div className="tech-card p-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mb-4 text-white">
+              <SpotlightCard>
+                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 text-black">
                   {category.icon}
                 </div>
                 
@@ -134,11 +113,11 @@ const Skills = ({ setActiveSection }) => {
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm text-gray-400">Proficiency</span>
-                    <span className="text-blue-600 font-semibold text-sm">
+                    <span className="text-white font-semibold text-sm">
                       {animatedLevels[index] || 0}%
                     </span>
                   </div>
-                  <div className="progress-bar h-2">
+                  <div className="progress-bar">
                     <motion.div
                       className="progress-fill"
                       initial={{ width: 0 }}
@@ -162,26 +141,27 @@ const Skills = ({ setActiveSection }) => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>
 
+        {/* CTA Section */}
         <motion.div 
-          className="text-center"
+          className="content-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <div className="tech-card max-w-2xl mx-auto">
+          <SpotlightCard className="max-w-2xl mx-auto text-center">
             <h3 className="text-xl font-bold text-white mb-4">Ready to Build</h3>
             <p className="text-gray-300 leading-relaxed mb-6">
               Let's create something exceptional with cutting-edge technology and clean, efficient code.
             </p>
-            <button className="btn-primary px-6 py-3 rounded-lg font-medium transition-all duration-300">
+            <button className="btn-primary">
               Start a Project
             </button>
-          </div>
+          </SpotlightCard>
         </motion.div>
       </div>
     </div>

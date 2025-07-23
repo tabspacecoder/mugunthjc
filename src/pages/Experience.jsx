@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Building, Trophy, Zap, TrendingUp } from 'lucide-react';
+import { Calendar, MapPin, Building, Trophy, Zap, TrendingUp, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
 
@@ -11,14 +11,14 @@ const Experience = ({ setActiveSection }) => {
       location: 'Chennai, India',
       type: 'Full-time',
       description: [
-        'Collaborated with a cross-functional team to maintain a full-stack application built with ExtJS, ReactJS, Java, and Kotlin Spring Boot, proactively identifying and resolving issues to ensure smooth usability, optimal performance, and application security.',
-        'Maintained Kotlin Spring Boot applications integrated with AWS services—leveraging AWS Batch for efficient task scheduling, DynamoDB for optimized data storage and retrieval, and Parameter Store for secure configuration management—enhancing application performance, security, and scalability.',
-        'Worked with a large PostgreSQL database, writing complex SQL scripts to combine multiple tables and implement grouping and aggregation techniques for efficient data retrieval. Optimized query performance by fine-tuning SQL queries to handle large datasets effectively.',
-        'Utilized Jenkins to streamline and support the release process, ensuring smooth integration, seamless collaboration, and efficient software delivery across teams.',
-        'Built and maintained robust data ingestion systems in Java and Kotlin to extract and process data from LMS platforms such as Blackboard, Canvas, D2L, and Moodle.'
+        'Collaborated with cross-functional teams to maintain full-stack applications built with ExtJS, ReactJS, Java, and Kotlin Spring Boot.',
+        'Maintained Kotlin Spring Boot applications integrated with AWS services including AWS Batch, DynamoDB, and Parameter Store.',
+        'Worked with large PostgreSQL databases, writing complex SQL scripts for efficient data retrieval and optimization.',
+        'Utilized Jenkins to streamline release processes and ensure smooth software delivery across teams.',
+        'Built robust data ingestion systems in Java and Kotlin for LMS platforms including Blackboard, Canvas, D2L, and Moodle.'
       ],
-      technologies: ['ExtJS', 'ReactJS', 'Java', 'Kotlin', 'Spring Boot', 'AWS Batch', 'DynamoDB', 'Parameter Store', 'PostgreSQL', 'Jenkins'],
-      achievements: ['Team Awesome award 2024']
+      technologies: ['ExtJS', 'ReactJS', 'Java', 'Kotlin', 'Spring Boot', 'AWS', 'PostgreSQL', 'Jenkins'],
+      achievements: ['Team Awesome Award 2024']
     },
     {
       company: 'Bounteous',
@@ -27,23 +27,28 @@ const Experience = ({ setActiveSection }) => {
       location: 'Chennai, India',
       type: 'Internship',
       description: [
-        'Gained hands-on experience with ReactJS and NodeJS for front-end and back-end development, building dynamic web applications, while also developing proficiency in Java and Kotlin with Spring Boot to create robust, scalable backend services.',
-        'Developed proof of concept (PoC) applications using ReactJS, NodeJS, Java, and Kotlin with Spring Boot, showcasing the seamless integration of front-end and back-end technologies to deliver a functional, scalable solution.'
+        'Gained hands-on experience with ReactJS and NodeJS for full-stack development.',
+        'Developed proficiency in Java and Kotlin with Spring Boot for backend services.',
+        'Created proof of concept applications showcasing seamless integration of technologies.',
+        'Participated in code reviews and agile development processes.'
       ],
       technologies: ['ReactJS', 'NodeJS', 'Java', 'Kotlin', 'Spring Boot'],
-      achievements: ['Pre placement offer for full-time role']
+      achievements: ['Pre-placement offer for full-time role']
     },
     {
-      company: 'Cameron Manufacturing India (P) Ltd – A Schlumberger Company',
+      company: 'Cameron Manufacturing India (P) Ltd',
       position: 'Summer Intern',
       duration: 'Jun 2022 – Aug 2022',
       location: 'Coimbatore, India',
       type: 'Internship',
       description: [
-        'Developed strong analytical abilities and valuable insights on working of ERP systems, focusing on extracting and analyzing data to improve process efficiencies.'
+        'Developed analytical abilities and insights into ERP system operations.',
+        'Focused on data extraction and analysis to improve process efficiencies.',
+        'Collaborated with cross-functional teams to understand business processes.',
+        'Contributed to process improvement initiatives through data-driven insights.'
       ],
-      technologies: ['ERP', 'Data Analysis'],
-      achievements: ['Pre placement offer for full-time role']
+      technologies: ['ERP Systems', 'Data Analysis', 'Process Optimization'],
+      achievements: ['Outstanding intern recognition']
     }
   ];
 
@@ -70,29 +75,39 @@ const Experience = ({ setActiveSection }) => {
   };
 
   return (
-    <div className="min-h-screen section-spacing">
-      <div className="page-container">
+    <div className="min-h-screen section-spacing relative overflow-hidden">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-32 right-16 w-24 h-24 rounded-full bg-purple-500/5"
+          animate={{ y: [-15, 15, -15], rotate: [0, 180, 360] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-32 left-16 w-20 h-20 rounded-full bg-purple-400/5"
+          animate={{ y: [15, -15, 15], rotate: [360, 180, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      <div className="page-container relative z-10">
         {/* Header */}
         <motion.div 
-          className="content-center mb-16"
+          className="content-center mb-20"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Professional Experience</h2>
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-white"></div>
-            <Trophy className="text-white" size={18} />
-            <div className="w-12 h-0.5 bg-white"></div>
-          </div>
-          <p className="text-lg text-gray-400">My journey in the tech industry</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">MY EXPERIENCE</h2>
+          <h3 className="text-5xl md:text-6xl font-bold text-white mb-8">Education</h3>
+          <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
+            My professional journey through various roles and the valuable experiences 
+            that have shaped my expertise in software development and technology.
+          </p>
         </motion.div>
 
         {/* Experience Timeline */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline Line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-800" />
-
+        <div className="relative max-w-5xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -101,82 +116,104 @@ const Experience = ({ setActiveSection }) => {
             {experiences.map((exp, index) => (
               <motion.div 
                 key={index} 
-                className="relative mb-12"
+                className="relative mb-16 last:mb-0"
                 variants={experienceVariants}
               >
-                {/* Timeline Dot */}
-                <div className="absolute left-5 w-3 h-3 bg-white rounded-full border-4 border-black z-10" />
-                
-                <div className="ml-16">
-                  <SpotlightCard>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white">{exp.position}</h3>
-                        <div className="flex items-center space-x-2 text-white mt-1">
-                          <Building size={16} />
-                          <span className="font-semibold">{exp.company}</span>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <SpotlightCard className="ml-8">
+                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-3 mb-2">
+                            <div className="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center">
+                              <Briefcase size={20} className="text-white" />
+                            </div>
+                            <div>
+                              <h3 className="text-2xl font-bold text-white">{exp.position}</h3>
+                              <div className="flex items-center space-x-2 text-purple-400 font-semibold">
+                                <Building size={16} />
+                                <span>{exp.company}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-4 lg:mt-0">
+                          <motion.span 
+                            className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                              exp.type === 'Internship' 
+                                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' 
+                                : 'bg-green-500/20 text-green-400 border border-green-500/30'
+                            }`}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            {exp.type}
+                          </motion.span>
                         </div>
                       </div>
-                      <div className="mt-2 sm:mt-0">
-                        <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                          exp.type === 'Internship' 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-green-600 text-white'
-                        }`}>
-                          {exp.type}
-                        </span>
-                      </div>
-                    </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-300 mb-4">
-                      <div className="flex items-center space-x-2">
-                        <Calendar size={16} />
-                        <span>{exp.duration}</span>
+                      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-400 mb-6">
+                        <div className="flex items-center space-x-2">
+                          <Calendar size={16} className="text-purple-400" />
+                          <span>{exp.duration}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin size={16} className="text-purple-400" />
+                          <span>{exp.location}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <MapPin size={16} />
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
 
-                    <ul className="space-y-3 mb-6">
-                      {exp.description.map((item, itemIndex) => (
-                        <li key={itemIndex} className="text-gray-300 flex items-start space-x-3">
-                          <Zap size={16} className="text-white mt-0.5 flex-shrink-0" />
-                          <span className="leading-relaxed">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Achievements */}
-                    <div className="mb-4">
-                      <h5 className="text-white font-semibold mb-2 flex items-center space-x-2">
-                        <TrendingUp size={16} className="text-white" />
-                        <span>Achievements</span>
-                      </h5>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <span
-                            key={achIndex}
-                            className="px-3 py-1 bg-yellow-600 text-white rounded-full text-sm font-medium"
+                      <div className="space-y-3 mb-6">
+                        {exp.description.map((item, itemIndex) => (
+                          <motion.div
+                            key={itemIndex}
+                            className="flex items-start space-x-3"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: itemIndex * 0.1 }}
                           >
-                            🏆 {achievement}
-                          </span>
+                            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-300 leading-relaxed">{item}</span>
+                          </motion.div>
                         ))}
                       </div>
-                    </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </SpotlightCard>
+                      {/* Achievements */}
+                      <div className="mb-6">
+                        <h5 className="text-white font-semibold mb-3 flex items-center space-x-2">
+                          <Trophy size={16} className="text-yellow-500" />
+                          <span>Key Achievements</span>
+                        </h5>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.achievements.map((achievement, achIndex) => (
+                            <motion.span
+                              key={achIndex}
+                              className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium border border-yellow-500/30"
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              🏆 {achievement}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, techIndex) => (
+                          <motion.span
+                            key={techIndex}
+                            className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm font-medium border border-gray-700"
+                            whileHover={{ scale: 1.05, backgroundColor: '#374151' }}
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </SpotlightCard>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -185,23 +222,36 @@ const Experience = ({ setActiveSection }) => {
 
         {/* CTA Section */}
         <motion.div 
-          className="content-center mt-16"
+          className="content-center mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <SpotlightCard className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready for New Challenges</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Always excited to work on innovative projects and collaborate with talented teams.
+          <SpotlightCard className="max-w-3xl mx-auto text-center">
+            <div className="w-16 h-16 bg-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+              <TrendingUp size={24} className="text-white" />
+            </div>
+            <h4 className="text-3xl font-bold text-white mb-6">Ready for New Challenges</h4>
+            <p className="text-gray-400 mb-8 leading-relaxed text-lg">
+              Always excited to work on innovative projects and collaborate with talented teams 
+              to create impactful solutions that drive business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">
+              <motion.button 
+                className="btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveSection('contact')}
+              >
                 Get In Touch
-              </button>
-              <button className="btn-secondary">
+              </motion.button>
+              <motion.button 
+                className="btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Download Resume
-              </button>
+              </motion.button>
             </div>
           </SpotlightCard>
         </motion.div>

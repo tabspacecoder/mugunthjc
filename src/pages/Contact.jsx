@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageSquare, Send, Clock, CheckCircle, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from '../components/SpotlightCard';
 import Stepper, { Step } from '../components/Stepper.jsx';
@@ -56,40 +56,46 @@ const Contact = ({ setActiveSection }) => {
 
   const contactInfo = [
     {
-      icon: <Mail size={20} />,
-      title: 'Email',
+      icon: <Mail size={24} />,
+      title: 'Email Address',
       value: 'jc.mugunth@gmail.com',
-      link: 'mailto:jc.mugunth@gmail.com'
+      link: 'mailto:jc.mugunth@gmail.com',
+      description: 'Send me an email anytime!'
     },
     {
-      icon: <Phone size={20} />,
-      title: 'Phone',
+      icon: <Phone size={24} />,
+      title: 'Phone Number',
       value: '+353 (0) 123-4567',
-      link: 'tel:+353123456789'
+      link: 'tel:+353123456789',
+      description: 'Call me for urgent matters'
     },
     {
-      icon: <MapPin size={20} />,
+      icon: <MapPin size={24} />,
       title: 'Location',
       value: 'Dublin, Ireland',
-      link: '#'
+      link: '#',
+      description: 'Available for remote work'
     }
   ];
 
   const socialLinks = [
     {
-      icon: <Github size={20} />,
+      icon: <Github size={24} />,
       name: 'GitHub',
-      url: 'https://github.com/mugunthjc'
+      url: 'https://github.com/mugunthjc',
+      color: 'hover:bg-gray-700'
     },
     {
-      icon: <Linkedin size={20} />,
+      icon: <Linkedin size={24} />,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/mugunthjc'
+      url: 'https://linkedin.com/in/mugunthjc',
+      color: 'hover:bg-blue-600'
     },
     {
-      icon: <Twitter size={20} />,
+      icon: <Twitter size={24} />,
       name: 'Twitter',
-      url: 'https://twitter.com/mugunthjc'
+      url: 'https://twitter.com/mugunthjc',
+      color: 'hover:bg-blue-500'
     }
   ];
 
@@ -116,99 +122,142 @@ const Contact = ({ setActiveSection }) => {
   };
 
   return (
-    <div className="min-h-screen section-spacing">
-      <div className="page-container">
+    <div className="min-h-screen section-spacing relative overflow-hidden">
+      {/* Floating background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-32 right-20 w-28 h-28 rounded-full bg-purple-500/5"
+          animate={{ 
+            y: [-25, 25, -25], 
+            rotate: [0, 360],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-32 left-20 w-20 h-20 rounded-full bg-purple-400/5"
+          animate={{ 
+            y: [25, -25, 25], 
+            rotate: [360, 0],
+            scale: [1.3, 1, 1.3]
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/3 w-16 h-16 rounded-full bg-purple-600/5"
+          animate={{ 
+            y: [-15, 15, -15], 
+            x: [-15, 15, -15],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      <div className="page-container relative z-10">
         {/* Header */}
         <motion.div 
-          className="content-center mb-16"
+          className="content-center mb-20"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="w-12 h-0.5 bg-white"></div>
-            <MessageSquare className="text-white" size={18} />
-            <div className="w-12 h-0.5 bg-white"></div>
-          </div>
-          <p className="text-lg text-gray-400">Let's discuss your next project</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Lets Connect there</h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Ready to start your next project or just want to chat? I'd love to hear from you. 
+            Let's create something amazing together.
+          </p>
         </motion.div>
 
         <motion.div 
-          className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto"
+          className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Contact Information */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold text-white mb-8">Contact Information</h3>
-            
-            <div className="space-y-6 mb-8">
+            <div className="space-y-8 mb-12">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <SpotlightCard className="flex items-center space-x-4 p-4">
-                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">{info.title}</h4>
-                      <p className="text-gray-300 text-sm">{info.value}</p>
+                  <SpotlightCard className="group">
+                    <div className="flex items-start space-x-6">
+                      <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                        {info.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-white mb-2">{info.title}</h4>
+                        <p className="text-purple-400 font-semibold mb-1">{info.value}</p>
+                        <p className="text-gray-400 text-sm">{info.description}</p>
+                      </div>
                     </div>
                   </SpotlightCard>
                 </motion.div>
               ))}
             </div>
 
+            {/* Social Links */}
             <motion.div 
-              className="mb-8"
+              className="mb-12"
               variants={itemVariants}
             >
-              <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
-                <Send className="text-white" size={18} />
-                <span>Connect With Me</span>
+              <h4 className="text-2xl font-bold text-white mb-6 flex items-center space-x-3">
+                <User className="text-purple-500" size={24} />
+                <span>Follow Me</span>
               </h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-white text-black rounded-lg hover-lift transition-all duration-300"
+                    className={`w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center text-gray-300 transition-all duration-300 ${social.color}`}
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {social.icon}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
 
+            {/* Availability Status */}
             <motion.div variants={itemVariants}>
               <SpotlightCard>
-                <h4 className="text-white font-semibold mb-4">Availability Status</h4>
-                <div className="space-y-3">
+                <h4 className="text-xl font-bold text-white mb-6 flex items-center space-x-3">
+                  <Clock className="text-purple-500" size={20} />
+                  <span>Availability Status</span>
+                </h4>
+                <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <motion.div 
-                      className="w-2 h-2 bg-green-400 rounded-full"
-                      animate={{ scale: [1, 1.2, 1] }}
+                      className="w-3 h-3 bg-green-400 rounded-full"
+                      animate={{ scale: [1, 1.3, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <span className="text-gray-300 text-sm">Available for projects</span>
+                    <span className="text-gray-300">Available for new projects</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <motion.div 
-                      className="w-2 h-2 bg-green-400 rounded-full"
-                      animate={{ scale: [1, 1.2, 1] }}
+                      className="w-3 h-3 bg-green-400 rounded-full"
+                      animate={{ scale: [1, 1.3, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                     />
-                    <span className="text-gray-300 text-sm">Open to opportunities</span>
+                    <span className="text-gray-300">Open to collaborations</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">Responds within 24 hours</span>
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <span className="text-gray-300">Responds within 24 hours</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle size={12} className="text-purple-400" />
+                    <span className="text-gray-300">Remote work friendly</span>
                   </div>
                 </div>
               </SpotlightCard>
@@ -217,7 +266,13 @@ const Contact = ({ setActiveSection }) => {
 
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold text-white mb-8">Send Message</h3>  
+            <div className="mb-8">
+              <h3 className="text-3xl font-bold text-white mb-4">Send Message</h3>
+              <p className="text-gray-400">
+                Fill out the form below and I'll get back to you as soon as possible.
+              </p>
+            </div>
+            
             {!loading ? (
               <Stepper
                 initialStep={1}
@@ -229,11 +284,11 @@ const Contact = ({ setActiveSection }) => {
                 nextButtonText="Next"
               >
                 <Step>
-                  <div className="space-y-4">
-                    <label htmlFor="name" className="block text-white font-medium text-sm">
-                      Your Name
-                    </label>
-                    <div className='pb-2'>
+                  <div className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-white font-semibold text-lg mb-3">
+                        What's your name?
+                      </label>
                       <input
                         type="text"
                         id="name"
@@ -241,7 +296,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
+                        className="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-lg"
                         placeholder="Enter your full name"
                       />
                     </div>
@@ -249,11 +304,11 @@ const Contact = ({ setActiveSection }) => {
                 </Step>
                 
                 <Step>
-                  <div className="space-y-4">
-                    <label htmlFor="email" className="block text-white font-medium text-sm">
-                      Your Email
-                    </label>
-                    <div className='pb-2'>
+                  <div className="space-y-6">
+                    <div>
+                      <label htmlFor="email" className="block text-white font-semibold text-lg mb-3">
+                        Your email address?
+                      </label>
                       <input
                         type="email"
                         id="email"
@@ -261,7 +316,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 pb-3 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
+                        className="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-lg"
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -269,11 +324,11 @@ const Contact = ({ setActiveSection }) => {
                 </Step>
                 
                 <Step>
-                  <div className="space-y-4">
-                    <label htmlFor="subject" className="block text-white font-medium text-sm">
-                      Subject
-                    </label>
-                    <div className='pb-2'>
+                  <div className="space-y-6">
+                    <div>
+                      <label htmlFor="subject" className="block text-white font-semibold text-lg mb-3">
+                        What's this about?
+                      </label>
                       <input
                         type="text"
                         id="subject"
@@ -281,7 +336,7 @@ const Contact = ({ setActiveSection }) => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 pb-3 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300"
+                        className="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-lg"
                         placeholder="Project collaboration, Job opportunity, etc."
                       />
                     </div>
@@ -289,28 +344,31 @@ const Contact = ({ setActiveSection }) => {
                 </Step>
                 
                 <Step isFinal>
-                  <div className="space-y-4">
-                    <label htmlFor="message" className="block text-white font-medium text-sm">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full pb-3 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Tell me about your project..."
-                    />
+                  <div className="space-y-6">
+                    <div>
+                      <label htmlFor="message" className="block text-white font-semibold text-lg mb-3">
+                        Tell me more about your project
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={6}
+                        className="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none text-lg"
+                        placeholder="Describe your project, timeline, budget, and any specific requirements..."
+                      />
+                    </div>
                   </div>
                 </Step>
               </Stepper>
             ) : (
-              <div className="flex items-center justify-center py-20">
+              <div className="flex items-center justify-center py-32">
                 <div className="text-center">
-                  <RingLoader loading color="#FFFFFF" size={60} />
-                  <p className="text-white mt-4">Sending your message...</p>
+                  <RingLoader loading color="#8B5CF6" size={80} />
+                  <p className="text-white mt-6 text-lg">Sending your message...</p>
+                  <p className="text-gray-400 mt-2">This won't take long</p>
                 </div>
               </div>
             )}
